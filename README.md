@@ -1,1 +1,2 @@
-# vimrc\nmy vimrc file
+# vimrc
+my vimrc file

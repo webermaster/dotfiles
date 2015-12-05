@@ -1,7 +1,7 @@
 syntax on "turn syntax highlighting on
-set number ' turn on line numbers
 set nowrap " don't wrap lines
 set tabstop=4 " tab is 4 spaces
+set expandtab " On pressing tab, insert 4 spaces
 set backspace=indent,eol,start " allow backspacing over everything in insert
 set autoindent " always set autoindenting on
 set copyindent " copy previous indentation on autoindenting
@@ -13,4 +13,5 @@ set hlsearch " highlight search terms
 set incsearch " show search matches as you type
 set laststatus=2 " show status line always
 
+" filetype detection for *.go filetype
 au BufRead,BufNewFile *.go set filetype=go

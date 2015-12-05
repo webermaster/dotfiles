@@ -1,4 +1,5 @@
 syntax on "turn syntax highlighting on
+set number ' turn on line numbers
 set nowrap " don't wrap lines
 set tabstop=4 " tab is 4 spaces
 set backspace=indent,eol,start " allow backspacing over everything in insert

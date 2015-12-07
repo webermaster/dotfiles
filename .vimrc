@@ -1,4 +1,5 @@
 syntax on "turn syntax highlighting on
+set number " set line numbers
 set nowrap " don't wrap lines
 set tabstop=4 " tab is 4 spaces
 set expandtab " On pressing tab, insert 4 spaces

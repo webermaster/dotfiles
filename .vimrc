@@ -14,5 +14,4 @@ set hlsearch " highlight search terms
 set incsearch " show search matches as you type
 set laststatus=2 " show status line always
 
-" filetype detection for *.go filetype
-au BufRead,BufNewFile *.go set filetype=go
+au BufRead,BufNewFile *.go set filetype=go " filetype detection for *.go filetype

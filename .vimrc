@@ -13,5 +13,3 @@ set smartcase " ignore case if search pattern is all lowercase, case-sensitive o
 set hlsearch " highlight search terms
 set incsearch " show search matches as you type
 set laststatus=2 " show status line always
-
-au BufRead,BufNewFile *.go set filetype=go " filetype detection for *.go filetype

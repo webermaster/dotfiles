@@ -26,12 +26,10 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'nanotech/jellybeans.vim'
 
 "---------- Language Specific -----
 Plugin 'fatih/vim-go'
@@ -44,8 +42,6 @@ filetype plugin indent on
 set laststatus=2 " show status line always
 let g:airline_detect_paste=1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='jellybeans'
-colorscheme jellybeans
 
 "------------ NERDTREE SETTINGS ---------
 map <silent> <leader>t :NERDTreeToggle<CR>
@@ -54,3 +50,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
 "------------ SYNTASTIC SETTINGS -------
+
+"----------- VIM-GO -------------------
+let g:go_version_warning = 0

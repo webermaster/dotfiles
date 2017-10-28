@@ -45,8 +45,6 @@ call vundle#end()
 "------------ PLUGINS END --------------
 filetype plugin indent on
 
-"------ CLASSIC BRACKET COMPLETION ---
-
 "------------ AIRLINE SETTINGS -------
 set laststatus=2 " show status line always
 let g:airline_detect_paste = 1
@@ -82,14 +80,6 @@ function! s:build_go_files()
         call go#cmd#Build(0)
     endif
 endfunction
-ino " ""<left>
-ino ' ''<left>
-ino ` ``<left>
-ino ( ()<left>
-ino [ []<left>
-ino { {}<left>
-ino {<CR> {<CR>}<ESC>O
-ino {;<CR> {<CR>};<ESC>O
 autocmd FileType go nmap <Leader>b :<C-u>call <SID>build_go_files()<CR>
 autocmd FileType go nmap <Leader>g <Plug>(go-run)
 autocmd FileType go nmap <Leader>t <Plug>(go-test)

@@ -1,36 +1,51 @@
-syntax on "turn syntax highlighting on
-set nocompatible
-set number " set line numbers
-set nowrap " don't wrap lines
-set tabstop=4 " tab is 4 spaces
-set expandtab " On pressing tab, insert 4 spaces
-set backspace=indent,eol,start " allow backspacing over everything in insert
-set autoindent " always set autoindenting on
-set smartindent
-set copyindent " copy previous indentation on autoindenting
-set shiftwidth=4 " number of spaces to use for autoindenting
-set showmatch " show matching parentheses
-set smartcase " ignore case if search pattern is all lowercase, case-sensitive otherwise
-set hlsearch " highlight search terms
-set incsearch " show search matches as you type
-set splitright " vsplit opens to the right
+syntax on                        "turn syntax highlighting on
 
+set nocompatible
+set autoread                    " Automatically read changed files
+set number                      " set line numbers
+set nowrap                      " don't wrap lines
+set laststatus=2                " show status line always
+set tabstop=4                   " tab is 4 spaces
+set expandtab                   " On pressing tab, insert 4 spaces
+set backspace=indent,eol,start  " allow backspacing over everything in insert
+set autoindent                  " always set autoindenting on
+set smartindent                 " Asmart autoindenting when starting a new line
+set copyindent                  " copy previous indentation on autoindenting
+set shiftwidth=4                " number of spaces to use for autoindenting
+set showmatch                   " show matching parentheses
+set smartcase                   " ignore case if search pattern is all lowercase, case-sensitive otherwise
+set hlsearch                    " highlight search terms
+set incsearch                   " show search matches as you type
+set splitright                  " vsplit opens to the right
+set splitbelow                  " Horizontal windows should split to bottom
+set noshowmode                  " We show the mode with airline or lightline
+set completeopt=menu,menuone    " Show popup menu, even if there is one entry
+set pumheight=10                " Completion window max size
 set mouse=a
 
-filetype off " turn off filetype for vundle
+filetype off                    " turn off filetype for vundle
+filetype plugin indent on       " file detection
 
-" set runtime path to include Vundle and initilize
-set rtp+=~/.vim/bundle/Vundle.vim
+" Enter automatically into the files directory
+autocmd BufEnter * silent! lcd %:p:h
+
+" Act like D and C
+nnoremap Y y$
+nnoremap <Leader>a :cclose<CR>
+map <Leader>n :cprevious<CR>
+map <Leader>m :cnext<CR>
 
 "------------- PLUGINS START -------------
+" set runtime path to include Vundle and initilize
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'nanotech/jellybeans.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/NERDTree'
 Plugin 'majutsushi/tagbar'
-Plugin 'nanotech/jellybeans.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
@@ -43,16 +58,16 @@ Plugin 'jiangmiao/auto-pairs'
 
 call vundle#end()
 "------------ PLUGINS END --------------
-filetype plugin indent on
+
+"---------- JELLYBEANS SETTINGS -------
+set background=dark
+colorscheme jellybeans
 
 "------------ AIRLINE SETTINGS -------
-set laststatus=2 " show status line always
 let g:airline_detect_paste = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-set background=dark
 let g:airline_theme = 'jellybeans'
-colorscheme jellybeans
 
 "--------- NERDTREE settings ---------
 map <Leader>p :NERDTreeToggle<CR>
@@ -66,12 +81,13 @@ augroup END
 nmap <Leader>o :TagbarToggle<CR>
 let g:tagbar_show_linenumbers = 2
 
-"------------ SYNTASTIC SETTINGS -------
+"----------- SYNTASTIC SETTINGS -------
 
-"----------- VIM-GO -------------------
-map <Leader>n :cprevious<CR>
-map <Leader>m :cnext<CR>
-nnoremap <Leader>a :cclose<CR>
+"---------- CTRLP SETTINGS -----------
+
+"---------- FUGITIVE SETTINGS -------
+
+"----------- VIM-GO SETTINGS----------
 function! s:build_go_files()
     let l:file = expand('%')
     if l:file =~# '^\f\+_test\.go$'
@@ -80,18 +96,26 @@ function! s:build_go_files()
         call go#cmd#Build(0)
     endif
 endfunction
-autocmd FileType go nmap <Leader>b :<C-u>call <SID>build_go_files()<CR>
-autocmd FileType go nmap <Leader>g <Plug>(go-run)
-autocmd FileType go nmap <Leader>t <Plug>(go-test)
-autocmd FileType go nmap <Leader>s <Plug>(go-alternate-vertical)
-autocmd FileType go nmap <Leader>d <Plug>(go-doc-vertical)
-autocmd FileType go nmap <Leader>db <Plug>(go-doc-browser)
-autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
-autocmd FileType go nmap <Leader>i :GoImpl<CR>
-autocmd FileType go nmap <Leader>r <Plug>(go-rename)
-autocmd FileType go vmap <Leader>f <Plug>(go-freevars)
+augroup go
+    autocmd FileType go nmap <Leader>b :<C-u>call <SID>build_go_files()<CR>
+    autocmd FileType go nmap <Leader>g <Plug>(go-run)
+    autocmd FileType go nmap <Leader>t <Plug>(go-test)
+    autocmd FileType go nmap <Leader>s <Plug>(go-alternate-vertical)
+    autocmd FileType go nmap <Leader>d <Plug>(go-doc-vertical)
+    autocmd FileType go nmap <Leader>db <Plug>(go-doc-browser)
+    autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+    autocmd FileType go nmap <Leader>i :GoImpl<CR>
+    autocmd FileType go nmap <Leader>r <Plug>(go-rename)
+    autocmd FileType go vmap <Leader>f <Plug>(go-freevars)
+augroup END
 
 let g:go_list_type = 'quickfix'
 let g:go_fmt_command = 'goimports'
-let g:go_auto_type_info = 1
+let g:go_autodetect_gopath = 1
 let g:go_version_warning = 0
+
+"------ UTILINSIPS SETTINGS ---------
+
+"------ SPLITJION SETTINGS --------
+
+"------- AUTO-PAIRS SETTINGS -------

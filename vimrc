@@ -70,7 +70,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_theme = 'jellybeans'
 
 "--------- NERDTREE settings ---------
-map <Leader>p :NERDTreeToggle<CR>
+map <Leader>o :NERDTreeToggle<CR>
 augroup ProjectDrawer
     autocmd StdinReadPre * let s:std_in=1
     autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
@@ -78,7 +78,7 @@ augroup ProjectDrawer
 augroup END
 
 "----------- TAGBAR SETTINGS -----------
-nmap <Leader>o :TagbarToggle<CR>
+nmap <Leader>p :TagbarToggle<CR>
 let g:tagbar_show_linenumbers = 2
 
 "----------- SYNTASTIC SETTINGS -------

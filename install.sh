@@ -8,14 +8,6 @@ rm .profile
 rm -rf $BREWDIR
 unset GOROOT
 
-#setup initial .profile
-cat << EOF > ~/.profile
-
-#ALIASES
-alias ls='ls -lFGh'
-alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
-EOF
-
 #install Homebrew
 mkdir -p $BREWDIR && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $BREWDIR
 
@@ -39,6 +31,10 @@ CELLAR=$BREWDIR/Cellar
 export GOP=`cd $CELLAR/go/* && echo "${PWD##*/}"`
 
 cat << EOF >> ~/.profile
+
+#ALIASES
+alias ls='ls -lFGh'
+alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
 
 #CREATE ENVIRONMENT VARIABLES
 export JAVA_HOME=`/usr/libexec/java_home -v 9`

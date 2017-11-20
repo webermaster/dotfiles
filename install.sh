@@ -27,6 +27,7 @@ $BREW tap caskroom/cask
 $BREW cask install java
 $BREW install maven
 $BREW install go
+$BREW install dep
 $BREW install python3
 $BREW install node
 $BREW install --HEAD universal-ctags/universal-ctags/universal-ctags
@@ -36,7 +37,6 @@ $BREW cask install slack
 #setup environment installed by brew
 CELLAR=$BREWDIR/Cellar
 export GOP=`cd $CELLAR/go/* && echo "${PWD##*/}"`
-export CTAGP=`cd $CELLAR/universal-ctags/HEAD-* && echo "${PWD##*/}"`
 
 cat << EOF >> ~/.profile
 
@@ -48,11 +48,9 @@ export BREW_HOME=~/Developer/homebrew
 CELLAR=\$BREW_HOME/Cellar
 
 export GOROOT=\$CELLAR/go/$GOP/libexec
-export CTAGS_HOME=\$CELLAR/universal-ctags/$CTAGP
 
 #ADD ENVIRONMENT VARIABLES TO THE PATH
-export PATH=\$CTAGS_HOME/bin:\$PATH:\\
-\$BREW_HOME/bin:\\
+export PATH=\$BREW_HOME/bin:\$PATH:\\
 \$GOROOT/bin:\\
 \$GOPATH/bin
 

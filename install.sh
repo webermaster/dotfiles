@@ -21,7 +21,6 @@ $BREW install dep
 $BREW install python3
 $BREW install node
 $BREW install --HEAD universal-ctags/universal-ctags/universal-ctags
-$BREW install docker-machine-driver-xhyve
 
 #install casks
 $BREW cask install java
@@ -37,7 +36,6 @@ cat << EOF >> ~/.profile
 #ALIASES
 alias ls='ls -lFGh'
 alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
-alias mkstart='minikube --vm-driver=xhyve start'
 
 #CREATE ENVIRONMENT VARIABLES
 export JAVA_HOME=`/usr/libexec/java_home`
@@ -68,8 +66,3 @@ vim -c 'PluginInstall' -c 'GoInstallBinaries' -c 'qa!'
 mkdir -p ~/Documents/go/src
 mkdir -p ~/Documents/go/bin
 mkdir -p ~/Documents/go/pkg
-
-# setup xhyve as minikube driver
-chown root:wheel $BREWDIR/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
-chmod u+s $BREWDIR/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
-

@@ -52,6 +52,8 @@ export PATH=\$BREW_HOME/bin:\$PATH:\\
 \$GOROOT/bin:\\
 \$GOPATH/bin
 
+source <(kubectl completion bash)
+
 EOF
 
 #symlink .vimrc

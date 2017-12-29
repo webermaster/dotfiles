@@ -21,6 +21,7 @@ $BREW install dep
 $BREW install python3
 $BREW install node
 $BREW install --HEAD universal-ctags/universal-ctags/universal-ctags
+$BREW install kubectl
 
 #install casks
 $BREW cask install java

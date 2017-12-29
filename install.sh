@@ -2,11 +2,10 @@
 
 #make may for fresh install
 BREWDIR=~/Developer/homebrew
-rm ~/.vimrc
-rm -rf .vim
-rm .profile
+mv ~/.vimrc ~/.vimrc.old
+mv ~/.vim ~/.vim.old
+mv ~/.profile ~/.profile.old
 rm -rf $BREWDIR
-unset GOROOT
 
 #install Homebrew
 mkdir -p $BREWDIR && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $BREWDIR
@@ -16,28 +15,32 @@ BREW=~/Developer/homebrew/bin/brew
 $BREW tap caskroom/cask
 
 #install kegs
-$BREW cask install java
 $BREW install maven
 $BREW install go
 $BREW install dep
 $BREW install python3
 $BREW install node
 $BREW install --HEAD universal-ctags/universal-ctags/universal-ctags
+$BREW install docker-machine-driver-xhyve
+
+#install casks
+$BREW cask install java
 $BREW cask install intellij-idea-ce
 $BREW cask install slack
 
 #setup environment installed by brew
 CELLAR=$BREWDIR/Cellar
-export GOP=`cd $CELLAR/go/* && echo "${PWD##*/}"`
+GOP=`cd $CELLAR/go/* && echo "${PWD##*/}"`
 
 cat << EOF >> ~/.profile
 
 #ALIASES
 alias ls='ls -lFGh'
 alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
+alias mkstart='minikube --vm-driver=xhyve start'
 
 #CREATE ENVIRONMENT VARIABLES
-export JAVA_HOME=`/usr/libexec/java_home -v 9`
+export JAVA_HOME=`/usr/libexec/java_home`
 export GOPATH=~/Documents/go
 
 export BREW_HOME=~/Developer/homebrew
@@ -65,4 +68,8 @@ vim -c 'PluginInstall' -c 'GoInstallBinaries' -c 'qa!'
 mkdir -p ~/Documents/go/src
 mkdir -p ~/Documents/go/bin
 mkdir -p ~/Documents/go/pkg
+
+# setup xhyve as minikube driver
+chown root:wheel $BREWDIR/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
+chmod u+s $BREWDIR/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
 

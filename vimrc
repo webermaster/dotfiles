@@ -119,9 +119,3 @@ let g:go_version_warning = 0
 "------ SPLITJION SETTINGS --------
 
 "------- AUTO-PAIRS SETTINGS -------
-
-"------- SPECIAL FILE TYPES ------
-
-augroup filetypedetect
-        au BufRead,BufNewFile Dockerfile.multi set filetype=dockerfile
-augroup END

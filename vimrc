@@ -55,7 +55,6 @@ Plugin 'fatih/vim-go'
 Plugin 'SirVer/ultisnips'
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'ekalinin/Dockerfile.vim'
 
 call vundle#end()
 "------------ PLUGINS END --------------
@@ -120,3 +119,9 @@ let g:go_version_warning = 0
 "------ SPLITJION SETTINGS --------
 
 "------- AUTO-PAIRS SETTINGS -------
+
+"------- SPECIAL FILE TYPES ------
+
+augroup filetypedetect
+        au BufRead,BufNewFile Dockerfile.multi set filetype=dockerfile
+augroup END

@@ -2,7 +2,7 @@
 
 #make may for fresh install
 BREWDIR=~/Developer/homebrew
-mv ~/.vimrc ~/.vimrc.old
+mv "$(cd "$(dirname "$0")"; pwd -P )"/vimrc ~/.vimrc.old
 mv ~/.vim ~/.vim.old
 mv ~/.profile ~/.profile.old
 rm -rf $BREWDIR

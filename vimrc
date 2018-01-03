@@ -55,6 +55,7 @@ Plugin 'fatih/vim-go'
 Plugin 'SirVer/ultisnips'
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'ekalinin/Dockerfile.vim'
 
 call vundle#end()
 "------------ PLUGINS END --------------

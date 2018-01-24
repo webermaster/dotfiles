@@ -6,6 +6,7 @@ set number                      " set line numbers
 set nowrap                      " don't wrap lines
 set laststatus=2                " show status line always
 set tabstop=4                   " tab is 4 spaces
+set softtabstop=4               " tab is 4 space when inserting
 set expandtab                   " On pressing tab, insert 4 spaces
 set backspace=indent,eol,start  " allow backspacing over everything in insert
 set autoindent                  " always set autoindenting on
@@ -28,6 +29,9 @@ filetype plugin indent on       " file detection
 
 " Enter automatically into the files directory
 autocmd BufEnter * silent! lcd %:p:h
+
+autocmd BufNewFile,BufRead *.yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2
+autocmd BufNewFile,BufRead *.yml setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
 " Act like D and C
 nnoremap Y y$

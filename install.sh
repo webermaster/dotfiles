@@ -39,7 +39,6 @@ cat << EOF >> ~/.profile
 #ALIASES
 alias ls='ls -lFGh'
 alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
-alias kube='kubectl'
 
 #CREATE ENVIRONMENT VARIABLES
 export JAVA_HOME=`/usr/libexec/java_home`

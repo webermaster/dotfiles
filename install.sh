@@ -20,7 +20,6 @@ $BREW install maven
 $BREW install go
 $BREW install dep
 $BREW install python3
-$BREW install node
 $BREW install --HEAD universal-ctags/universal-ctags/universal-ctags
 $BREW install kubectl
 $BREW install docker

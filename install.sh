@@ -24,6 +24,7 @@ $BREW install node
 $BREW install --HEAD universal-ctags/universal-ctags/universal-ctags
 $BREW install kubectl
 $BREW install docker
+$BREW install awscli
 
 #install casks
 $BREW cask install java

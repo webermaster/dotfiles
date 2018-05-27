@@ -2,8 +2,6 @@
 
 #make may for fresh install
 BREWDIR=~/Developer/homebrew
-mv "$(cd "$(dirname "$0")"; pwd -P )"/vimrc ~/.vimrc.old
-mv ~/.vim ~/.vim.old
 mv ~/.profile ~/.profile.old
 rm -rf $BREWDIR
 
@@ -19,7 +17,6 @@ $BREW install watch
 $BREW install maven
 $BREW install go
 $BREW install dep
-$BREW install python3
 $BREW install --HEAD universal-ctags/universal-ctags/universal-ctags
 $BREW install kubectl
 $BREW install docker

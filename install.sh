@@ -26,6 +26,7 @@ $BREW install awscli
 $BREW cask install java
 $BREW cask install intellij-idea-ce
 $BREW cask install slack
+$BREW cask install google-cloud-sdk
 
 #setup environment installed by brew
 CELLAR=$BREWDIR/Cellar

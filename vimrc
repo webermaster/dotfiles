@@ -59,6 +59,7 @@ Plugin 'fatih/vim-go'
 Plugin 'SirVer/ultisnips'
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'uarun/vim-protobuf' " .proto file syntax highlghting
 
 call vundle#end()
 "------------ PLUGINS END --------------

@@ -13,10 +13,10 @@ BREW=~/Developer/homebrew/bin/brew
 $BREW tap caskroom/cask
 
 #install kegs
+$BREW install vim
 $BREW install watch
 $BREW install maven
 $BREW install go
-$BREW install dep
 $BREW install --HEAD universal-ctags/universal-ctags/universal-ctags
 $BREW install kubectl
 $BREW install docker
@@ -45,8 +45,6 @@ export GOPATH=~/Documents/go
 
 export BREW_HOME=~/Developer/homebrew
 CELLAR=\$BREW_HOME/Cellar
-
-export GOROOT=\$CELLAR/go/$GOP/libexec
 
 #ADD ENVIRONMENT VARIABLES TO THE PATH
 export PATH=\$BREW_HOME/bin:\$PATH:\\

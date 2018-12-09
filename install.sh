@@ -13,6 +13,7 @@ BREW=~/Developer/homebrew/bin/brew
 $BREW tap caskroom/cask
 
 #install kegs
+$BREW install vim
 $BREW install watch
 $BREW install maven
 $BREW install go

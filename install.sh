@@ -3,7 +3,11 @@
 #make may for fresh install
 BREWDIR=~/Developer/homebrew
 mv ~/.profile ~/.profile.old
+mv ~/.vim ~/.vim.old
+mv ~/.vimrc ~/.vimrc.old
 rm -rf $BREWDIR
+rm -rf ~/.vim
+rm -rf ~/.vimrc
 
 #install Homebrew
 mkdir -p $BREWDIR && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $BREWDIR
@@ -42,6 +46,7 @@ alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
 #CREATE ENVIRONMENT VARIABLES
 export JAVA_HOME=`/usr/libexec/java_home`
 export GOPATH=~/Documents/go
+export GO111MODULE=on
 
 export BREW_HOME=~/Developer/homebrew
 CELLAR=\$BREW_HOME/Cellar

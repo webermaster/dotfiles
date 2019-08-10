@@ -19,18 +19,15 @@ $BREW tap caskroom/cask
 #install kegs
 $BREW install vim
 $BREW install watch
-$BREW install maven
 $BREW install go
 $BREW install --HEAD universal-ctags/universal-ctags/universal-ctags
 $BREW install kubectl
 $BREW install docker
 $BREW install awscli
 $BREW install kubernetes-helm
-$BREW install mongodb
 
 #install casks
 $BREW cask install java
-$BREW cask install intellij-idea-ce
 $BREW cask install google-cloud-sdk
 $BREW cask install android-messages
 

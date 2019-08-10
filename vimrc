@@ -1,6 +1,6 @@
-syntax on                        "turn syntax highlighting on
+syntax on                       "turn syntax highlighting on
 
-set nocompatible
+set nocompatible                " don't care about compatibility with old vi
 set autoread                    " Automatically read changed files
 set number                      " set line numbers
 set nowrap                      " don't wrap lines
@@ -22,7 +22,7 @@ set splitbelow                  " Horizontal windows should split to bottom
 set noshowmode                  " We show the mode with airline or lightline
 set completeopt=menu,menuone    " Show popup menu, even if there is one entry
 set pumheight=10                " Completion window max size
-set mouse=a
+set mouse=a                     " enable mouse for all modes"
 
 filetype off                    " turn off filetype for vundle
 filetype plugin indent on       " file detection
@@ -30,8 +30,9 @@ filetype plugin indent on       " file detection
 " Enter automatically into the files directory
 autocmd BufEnter * silent! lcd %:p:h
 
-autocmd BufNewFile,BufRead *.yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2
-autocmd BufNewFile,BufRead *.yml setlocal tabstop=2 softtabstop=2 shiftwidth=2
+augroup yaml
+    autocmd FileType yaml,yml setlocal tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
 
 " Act like D and C
 nnoremap Y y$
@@ -44,22 +45,23 @@ map <Leader>m :cnext<CR>
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'scrooloose/NERDTree'
-Plugin 'majutsushi/tagbar'
-Plugin 'scrooloose/syntastic'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'tpope/vim-fugitive'
+Plugin 'VundleVim/Vundle.vim'           " plugin manager
+Plugin 'nanotech/jellybeans.vim'        " my chosen theme
+Plugin 'vim-airline/vim-airline'        " super awesome status bar
+Plugin 'vim-airline/vim-airline-themes' " airline themes
+Plugin 'scrooloose/NERDTree'            " advanced file browser
+Plugin 'majutsushi/tagbar'              " language tag browser
+Plugin 'scrooloose/syntastic'           " syntax checking
+Plugin 'ctrlpvim/ctrlp.vim'             " file finder
+Plugin 'tpope/vim-fugitive'             " git plugin
 
 "---------- Language Specific -----
-Plugin 'fatih/vim-go'
-Plugin 'SirVer/ultisnips'
-Plugin 'AndrewRadev/splitjoin.vim'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'uarun/vim-protobuf' " .proto file syntax highlghting
+Plugin 'artur-shaik/vim-javacomplete2'  " java plugin
+Plugin 'fatih/vim-go'                   " go plugin
+Plugin 'SirVer/ultisnips'               " extra snipits for go
+Plugin 'AndrewRadev/splitjoin.vim'      " utilisnip for go
+Plugin 'jiangmiao/auto-pairs'           " parens, quote, etc. automatching
+Plugin 'uarun/vim-protobuf'             " .proto file syntax highlghting
 
 call vundle#end()
 "------------ PLUGINS END --------------
@@ -82,17 +84,55 @@ augroup ProjectDrawer
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 augroup END
 
-"----------- TAGBAR SETTINGS -----------
+"----------- TAGBAR SETTINGS ----------
 nmap <Leader>p :TagbarToggle<CR>
 let g:tagbar_show_linenumbers = 2
 
 "----------- SYNTASTIC SETTINGS -------
 
-"---------- CTRLP SETTINGS -----------
+"---------- CTRLP SETTINGS ------------
 
-"---------- FUGITIVE SETTINGS -------
+"---------- FUGITIVE SETTINGS ---------
 
-"----------- VIM-GO SETTINGS----------
+"---- VIM-JAVACOMPLETE2  SETTINGS -----
+augroup java
+    autocmd FileType java setlocal omnifunc=javacomplete#Complete
+    autocmd FileType java nmap <leader>jI <Plug>(JavaComplete-Imports-AddMissing)
+    autocmd FileType java nmap <leader>jR <Plug>(JavaComplete-Imports-RemoveUnused)
+    autocmd FileType java nmap <leader>ji <Plug>(JavaComplete-Imports-AddSmart)
+    autocmd FileType java nmap <leader>jii <Plug>(JavaComplete-Imports-Add)
+
+    autocmd FileType java imap <C-j>I <Plug>(JavaComplete-Imports-AddMissing)
+    autocmd FileType java imap <C-j>R <Plug>(JavaComplete-Imports-RemoveUnused)
+    autocmd FileType java imap <C-j>i <Plug>(JavaComplete-Imports-AddSmart)
+    autocmd FileType java imap <C-j>ii <Plug>(JavaComplete-Imports-Add)
+
+    autocmd FileType java nmap <leader>jM <Plug>(JavaComplete-Generate-AbstractMethods)
+
+    autocmd FileType java imap <C-j>jM <Plug>(JavaComplete-Generate-AbstractMethods)
+
+    autocmd FileType java nmap <leader>jA <Plug>(JavaComplete-Generate-Accessors)
+    autocmd FileType java nmap <leader>js <Plug>(JavaComplete-Generate-AccessorSetter)
+    autocmd FileType java nmap <leader>jg <Plug>(JavaComplete-Generate-AccessorGetter)
+    autocmd FileType java nmap <leader>ja <Plug>(JavaComplete-Generate-AccessorSetterGetter)
+    autocmd FileType java nmap <leader>jts <Plug>(JavaComplete-Generate-ToString)
+    autocmd FileType java nmap <leader>jeq <Plug>(JavaComplete-Generate-EqualsAndHashCode)
+    autocmd FileType java nmap <leader>jc <Plug>(JavaComplete-Generate-Constructor)
+    autocmd FileType java nmap <leader>jcc <Plug>(JavaComplete-Generate-DefaultConstructor)
+
+    autocmd FileType java imap <C-j>s <Plug>(JavaComplete-Generate-AccessorSetter)
+    autocmd FileType java imap <C-j>g <Plug>(JavaComplete-Generate-AccessorGetter)
+    autocmd FileType java imap <C-j>a <Plug>(JavaComplete-Generate-AccessorSetterGetter)
+
+    autocmd FileType java vmap <leader>js <Plug>(JavaComplete-Generate-AccessorSetter)
+    autocmd FileType java vmap <leader>jg <Plug>(JavaComplete-Generate-AccessorGetter)
+    autocmd FileType java vmap <leader>ja <Plug>(JavaComplete-Generate-AccessorSetterGetter)
+
+    autocmd FileType java nmap <silent> <buffer> <leader>jn <Plug>(JavaComplete-Generate-NewClass)
+    autocmd FileType java nmap <silent> <buffer> <leader>jN <Plug>(JavaComplete-Generate-ClassInFile)
+augroup END
+
+"----------- VIM-GO SETTINGS-----------
 function! s:build_go_files()
     let l:file = expand('%')
     if l:file =~# '^\f\+_test\.go$'

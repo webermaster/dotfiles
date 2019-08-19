@@ -62,6 +62,7 @@ Plugin 'SirVer/ultisnips'               " extra snipits for go
 Plugin 'AndrewRadev/splitjoin.vim'      " utilisnip for go
 Plugin 'jiangmiao/auto-pairs'           " parens, quote, etc. automatching
 Plugin 'uarun/vim-protobuf'             " .proto file syntax highlghting
+Plugin 'hashivim/vim-terraform'         " terraform plugin
 
 call vundle#end()
 "------------ PLUGINS END --------------
@@ -164,3 +165,6 @@ let g:go_version_warning = 0
 "------ SPLITJION SETTINGS --------
 
 "------- AUTO-PAIRS SETTINGS -------
+
+"------- TERRAFORM  SETTINGS -------
+let g:terraform_fmt_on_save=1

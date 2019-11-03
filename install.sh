@@ -18,6 +18,7 @@ $BREW tap caskroom/cask
 
 #install kegs
 $BREW install vim
+$BREW install tmux
 $BREW install watch
 $BREW install go
 $BREW install --HEAD universal-ctags/universal-ctags/universal-ctags
@@ -39,7 +40,7 @@ cat << EOF >> ~/.profile
 
 #ALIASES
 alias ls='ls -lFGh'
-alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
+alias brewup='brew update; brew prune; brew cleanup; brew doctor'
 
 #CREATE ENVIRONMENT VARIABLES
 export JAVA_HOME=`/usr/libexec/java_home`

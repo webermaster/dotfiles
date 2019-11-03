@@ -26,6 +26,7 @@ $BREW install kubectl
 $BREW install docker
 $BREW install awscli
 $BREW install kubernetes-helm
+$BREW install terraform
 
 #install casks
 $BREW cask install java

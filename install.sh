@@ -5,9 +5,8 @@ BREWDIR=~/Developer/homebrew
 mv ~/.profile ~/.profile.old
 mv ~/.vim ~/.vim.old
 mv ~/.vimrc ~/.vimrc.old
+mv ~/.tmux.conf ~/.tmux.conf.old
 rm -rf $BREWDIR
-rm -rf ~/.vim
-rm -rf ~/.vimrc
 
 #install Homebrew
 mkdir -p $BREWDIR && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $BREWDIR
@@ -60,6 +59,9 @@ EOF
 
 #symlink .vimrc
 ln -s "$(cd "$(dirname "$0")"; pwd -P )"/vimrc ~/.vimrc
+
+#symlink .tmux.conf
+ln -s "$(cd "$(dirname "$0")"; pwd -P )"/tmux.conf ~/.tmux.conf
 
 #install Vundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim

@@ -48,6 +48,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'           " plugin manager
+Plugin 'edkolev/tmuxline.vim'           " vim-airline like tmux bar
 Plugin 'nanotech/jellybeans.vim'        " my chosen theme
 Plugin 'vim-airline/vim-airline'        " super awesome status bar
 Plugin 'vim-airline/vim-airline-themes' " airline themes
@@ -69,8 +70,16 @@ call vundle#end()
 "------------ PLUGINS END --------------
 
 "---------- JELLYBEANS SETTINGS -------
-set background=dark
+"set background=dark
 colorscheme jellybeans
+
+"----------- TMUXLINE SETTINGS --------
+let g:tmuxline_separators = {
+    \ 'left' : '',
+    \ 'left_alt': '',
+    \ 'right' : '',
+    \ 'right_alt' : '',
+    \ 'space' : ' '}
 
 "------------ AIRLINE SETTINGS -------
 let g:airline_detect_paste = 1

@@ -23,6 +23,8 @@ set noshowmode                  " We show the mode with airline or lightline
 set completeopt=menu,menuone    " Show popup menu, even if there is one entry
 set pumheight=10                " Completion window max size
 set mouse=a                     " enable mouse for all modes"
+set t_Co=256                    " force 256 colors
+set encoding=utf-8              " UTF-8 encoding
 
 filetype off                    " turn off filetype for vundle
 filetype plugin indent on       " file detection

@@ -66,6 +66,9 @@ ln -s "$(cd "$(dirname "$0")"; pwd -P )"/tmux.conf ~/.tmux.conf
 #install Vundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
+#install TPM
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 #get plugins
 vim -c 'PluginInstall' -c 'GoInstallBinaries' -c 'qa!'
 

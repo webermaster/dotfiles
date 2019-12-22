@@ -26,6 +26,9 @@ $BREW install docker
 $BREW install awscli
 $BREW install kubernetes-helm
 
+#java
+$BREW install maven
+
 #install casks
 $BREW cask install java
 $BREW cask install google-cloud-sdk

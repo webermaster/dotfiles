@@ -36,6 +36,10 @@ augroup yaml
     autocmd FileType yaml,yml setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
+augroup xml
+    autocmd FileType xml setlocal tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
+
 " Act like D and C
 nnoremap Y y$
 nnoremap <Leader>a :cclose<CR>
@@ -106,44 +110,9 @@ let g:tagbar_show_linenumbers = 2
 "---------- FUGITIVE SETTINGS ---------
 
 "---- VIM-JAVACOMPLETE2  SETTINGS -----
-augroup java
-    autocmd FileType java setlocal omnifunc=javacomplete#Complete
-    autocmd FileType java nmap <leader>jI <Plug>(JavaComplete-Imports-AddMissing)
-    autocmd FileType java nmap <leader>jR <Plug>(JavaComplete-Imports-RemoveUnused)
-    autocmd FileType java nmap <leader>ji <Plug>(JavaComplete-Imports-AddSmart)
-    autocmd FileType java nmap <leader>jii <Plug>(JavaComplete-Imports-Add)
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
-    autocmd FileType java imap <C-j>I <Plug>(JavaComplete-Imports-AddMissing)
-    autocmd FileType java imap <C-j>R <Plug>(JavaComplete-Imports-RemoveUnused)
-    autocmd FileType java imap <C-j>i <Plug>(JavaComplete-Imports-AddSmart)
-    autocmd FileType java imap <C-j>ii <Plug>(JavaComplete-Imports-Add)
-
-    autocmd FileType java nmap <leader>jM <Plug>(JavaComplete-Generate-AbstractMethods)
-
-    autocmd FileType java imap <C-j>jM <Plug>(JavaComplete-Generate-AbstractMethods)
-
-    autocmd FileType java nmap <leader>jA <Plug>(JavaComplete-Generate-Accessors)
-    autocmd FileType java nmap <leader>js <Plug>(JavaComplete-Generate-AccessorSetter)
-    autocmd FileType java nmap <leader>jg <Plug>(JavaComplete-Generate-AccessorGetter)
-    autocmd FileType java nmap <leader>ja <Plug>(JavaComplete-Generate-AccessorSetterGetter)
-    autocmd FileType java nmap <leader>jts <Plug>(JavaComplete-Generate-ToString)
-    autocmd FileType java nmap <leader>jeq <Plug>(JavaComplete-Generate-EqualsAndHashCode)
-    autocmd FileType java nmap <leader>jc <Plug>(JavaComplete-Generate-Constructor)
-    autocmd FileType java nmap <leader>jcc <Plug>(JavaComplete-Generate-DefaultConstructor)
-
-    autocmd FileType java imap <C-j>s <Plug>(JavaComplete-Generate-AccessorSetter)
-    autocmd FileType java imap <C-j>g <Plug>(JavaComplete-Generate-AccessorGetter)
-    autocmd FileType java imap <C-j>a <Plug>(JavaComplete-Generate-AccessorSetterGetter)
-
-    autocmd FileType java vmap <leader>js <Plug>(JavaComplete-Generate-AccessorSetter)
-    autocmd FileType java vmap <leader>jg <Plug>(JavaComplete-Generate-AccessorGetter)
-    autocmd FileType java vmap <leader>ja <Plug>(JavaComplete-Generate-AccessorSetterGetter)
-
-    autocmd FileType java nmap <silent> <buffer> <leader>jn <Plug>(JavaComplete-Generate-NewClass)
-    autocmd FileType java nmap <silent> <buffer> <leader>jN <Plug>(JavaComplete-Generate-ClassInFile)
-augroup END
-
-"----------- VIM-GO SETTINGS-----------
+"----------VIM-GO SETTINGS-----------
 function! s:build_go_files()
     let l:file = expand('%')
     if l:file =~# '^\f\+_test\.go$'

@@ -11,6 +11,6 @@ To find out what is installed check out `install.sh`
 
 ## Instructions
 
-Just run `install.sh`, put in user password when prompted.
+Run `install.sh`, put in user password when prompted.
 
 Be sure to open a fresh shell after completion to get `PATH` changes

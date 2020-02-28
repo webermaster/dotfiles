@@ -49,6 +49,7 @@ alias brewup='brew update; brew prune; brew cleanup; brew doctor'
 #CREATE ENVIRONMENT VARIABLES
 export JAVA_HOME=`/usr/libexec/java_home`
 export GOPATH=~/Documents/go
+export GOROOT=$CELLAR/go/$GOP
 export GO111MODULE=on
 
 export BREW_HOME=~/Developer/homebrew

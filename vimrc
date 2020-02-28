@@ -61,6 +61,7 @@ Plugin 'majutsushi/tagbar'              " language tag browser
 Plugin 'scrooloose/syntastic'           " syntax checking
 Plugin 'ctrlpvim/ctrlp.vim'             " file finder
 Plugin 'tpope/vim-fugitive'             " git plugin
+Plugin 'hashivim/vim-terraform'         " terraform plugin
 
 "---------- Language Specific -----
 Plugin 'artur-shaik/vim-javacomplete2'  " java plugin

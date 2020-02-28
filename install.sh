@@ -26,6 +26,7 @@ $BREW install docker
 $BREW install awscli
 $BREW install aws-cdk
 $BREW install kubernetes-helm
+$BREW install terraform
 
 #java
 $BREW install maven

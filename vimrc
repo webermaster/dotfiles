@@ -61,10 +61,10 @@ Plugin 'majutsushi/tagbar'              " language tag browser
 Plugin 'scrooloose/syntastic'           " syntax checking
 Plugin 'ctrlpvim/ctrlp.vim'             " file finder
 Plugin 'tpope/vim-fugitive'             " git plugin
-Plugin 'hashivim/vim-terraform'         " terraform plugin
 
 "---------- Language Specific -----
 Plugin 'artur-shaik/vim-javacomplete2'  " java plugin
+Plugin 'hashivim/vim-terraform'         " terraform plugin
 Plugin 'fatih/vim-go'                   " go plugin
 Plugin 'SirVer/ultisnips'               " extra snipits for go
 Plugin 'AndrewRadev/splitjoin.vim'      " utilisnip for go
@@ -110,6 +110,12 @@ let g:tagbar_show_linenumbers = 2
 
 "---------- FUGITIVE SETTINGS ---------
 
+"------ UTILINSIPS SETTINGS ---------
+
+"------ SPLITJION SETTINGS --------
+
+"------- AUTO-PAIRS SETTINGS -------
+"
 "---- VIM-JAVACOMPLETE2  SETTINGS -----
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
@@ -140,8 +146,6 @@ let g:go_fmt_command = 'goimports'
 let g:go_autodetect_gopath = 1
 let g:go_version_warning = 0
 
-"------ UTILINSIPS SETTINGS ---------
+"----------TERRAFORM SETTINGS-----------
+let g:terraform_fmt_on_save=1
 
-"------ SPLITJION SETTINGS --------
-
-"------- AUTO-PAIRS SETTINGS -------

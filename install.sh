@@ -13,7 +13,7 @@ mkdir -p $BREWDIR && curl -L https://github.com/Homebrew/brew/tarball/master | t
 
 #install brew cask
 BREW=~/Developer/homebrew/bin/brew
-$BREW tap caskroom/cask
+$BREW tap homebrew/cask-cask
 
 #install kegs
 $BREW install vim

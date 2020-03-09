@@ -27,7 +27,6 @@ set t_Co=256                    " force 256 colors
 set encoding=utf-8              " UTF-8 encoding
 
 filetype off                    " turn off filetype for vundle
-filetype plugin indent on       " file detection
 
 " Enter automatically into the files directory
 autocmd BufEnter * silent! lcd %:p:h
@@ -45,7 +44,7 @@ augroup xml
 augroup END
 
 augroup tf
-    autocmd FileType *.tf,*.tfstate,*.tfvars,*.tfstate.backup setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd FileType tf setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
 " Act like D and C
@@ -80,6 +79,7 @@ Plugin 'jiangmiao/auto-pairs'           " parens, quote, etc. automatching
 Plugin 'uarun/vim-protobuf'             " .proto file syntax highlghting
 
 call vundle#end()
+filetype plugin indent on               " file detection
 "------------ PLUGINS END --------------
 
 "---------- JELLYBEANS SETTINGS -------

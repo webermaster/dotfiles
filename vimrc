@@ -40,6 +40,10 @@ augroup xml
     autocmd FileType xml setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
+augroup tf
+    autocmd FileType tf,tfstate,tfstate.backup setlocal tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
+
 " Act like D and C
 nnoremap Y y$
 nnoremap <Leader>a :cclose<CR>

@@ -26,6 +26,8 @@ $BREW install awscli
 $BREW install aws-cdk
 $BREW install kubernetes-helm
 $BREW install terraform
+$BREW install minikube
+$BREW install hyperkit
 
 #java
 $BREW install maven
@@ -75,6 +77,8 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 #get plugins
 vim -c 'PluginInstall' -c 'GoInstallBinaries' -c 'qa!'
+
+minikube config set driver hyperkit
 
 #setup go workspace
 mkdir -p ~/Documents/go/src

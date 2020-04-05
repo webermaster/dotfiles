@@ -35,6 +35,9 @@ $BREW install maven
 #install casks
 $BREW cask install java
 $BREW cask install google-cloud-sdk
+$BREW cask install google-chrome
+$BREW cask install google-hangouts
+$BREW cask install google-backup-and-sync
 $BREW cask install android-messages
 $BREW cask install slack
 

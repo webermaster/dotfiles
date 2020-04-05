@@ -28,7 +28,6 @@ $BREW install kubernetes-helm
 $BREW install terraform
 $BREW install minikube
 $BREW install hyperkit
-$BREW install gdrive
 
 #java
 $BREW install maven

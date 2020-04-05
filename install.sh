@@ -36,6 +36,7 @@ $BREW install maven
 $BREW cask install java
 $BREW cask install google-cloud-sdk
 $BREW cask install android-messages
+$BREW cask install slack
 
 #setup environment installed by brew
 CELLAR=$BREWDIR/Cellar

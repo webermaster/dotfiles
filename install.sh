@@ -36,7 +36,6 @@ $BREW install maven
 $BREW cask install java
 $BREW cask install google-cloud-sdk
 $BREW cask install google-chrome
-$BREW cask install google-hangouts
 $BREW cask install google-backup-and-sync
 $BREW cask install android-messages
 $BREW cask install slack
@@ -56,6 +55,7 @@ export JAVA_HOME=`/usr/libexec/java_home`
 export GOPATH=~/Documents/go
 export GOROOT=$CELLAR/go/$GOP
 export GO111MODULE=on
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 export BREW_HOME=~/Developer/homebrew
 CELLAR=\$BREW_HOME/Cellar

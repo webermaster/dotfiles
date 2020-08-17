@@ -73,9 +73,8 @@ Plugin 'tpope/vim-fugitive'             " git plugin
 Plugin 'artur-shaik/vim-javacomplete2'  " java plugin
 Plugin 'hashivim/vim-terraform'         " terraform plugin
 Plugin 'fatih/vim-go'                   " go plugin
-Plugin 'SirVer/ultisnips'               " extra snipits for go
+"Plugin 'SirVer/ultisnips'               " extra snipits for go
 Plugin 'AndrewRadev/splitjoin.vim'      " utilisnip for go
-Plugin 'jiangmiao/auto-pairs'           " parens, quote, etc. automatching
 Plugin 'uarun/vim-protobuf'             " .proto file syntax highlghting
 
 call vundle#end()
@@ -122,8 +121,6 @@ let g:tagbar_show_linenumbers = 2
 
 "------ SPLITJION SETTINGS --------
 
-"------- AUTO-PAIRS SETTINGS -------
-"
 "---- VIM-JAVACOMPLETE2  SETTINGS -----
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 

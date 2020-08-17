@@ -28,6 +28,7 @@ $BREW install kubernetes-helm
 $BREW install terraform
 $BREW install minikube
 $BREW install hyperkit
+$BREW install k9s
 
 #java
 $BREW install maven
@@ -49,6 +50,7 @@ cat << EOF >> ~/.profile
 #ALIASES
 alias ls='ls -lFGh'
 alias brewup='brew update; brew prune; brew cleanup; brew doctor'
+alias mssh='ssh -i ~/.minikube/machines/minikube/id_rsa docker@$(minikube ip)'
 
 #CREATE ENVIRONMENT VARIABLES
 export JAVA_HOME=`/usr/libexec/java_home`
@@ -56,6 +58,7 @@ export GOPATH=~/Documents/go
 export GOROOT=$CELLAR/go/$GOP
 export GO111MODULE=on
 export BASH_SILENCE_DEPRECATION_WARNING=1
+export EDITOR=vim
 
 export BREW_HOME=~/Developer/homebrew
 CELLAR=\$BREW_HOME/Cellar
@@ -88,3 +91,7 @@ minikube config set driver hyperkit
 mkdir -p ~/Documents/go/src
 mkdir -p ~/Documents/go/bin
 mkdir -p ~/Documents/go/pkg
+
+#set git diff tool
+git config --global merge.tool vimdiff
+git config --global merge.conflictstyle diff3

@@ -40,6 +40,10 @@ $BREW cask install google-chrome
 $BREW cask install google-backup-and-sync
 $BREW cask install android-messages
 $BREW cask install slack
+$BREW cask install drawio
+$BREW cask install intellij-idea-ce
+$BREW cask install parallels
+
 
 #setup environment installed by brew
 CELLAR=$BREWDIR/Cellar

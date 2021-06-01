@@ -70,10 +70,9 @@ Plugin 'ctrlpvim/ctrlp.vim'             " file finder
 Plugin 'tpope/vim-fugitive'             " git plugin
 
 "---------- Language Specific -----
-Plugin 'artur-shaik/vim-javacomplete2'  " java plugin
 Plugin 'hashivim/vim-terraform'         " terraform plugin
 Plugin 'fatih/vim-go'                   " go plugin
-"Plugin 'SirVer/ultisnips'               " extra snipits for go
+Plugin 'SirVer/ultisnips'               " extra snipits for go
 Plugin 'AndrewRadev/splitjoin.vim'      " utilisnip for go
 Plugin 'uarun/vim-protobuf'             " .proto file syntax highlghting
 
@@ -120,9 +119,6 @@ let g:tagbar_show_linenumbers = 2
 "------ UTILINSIPS SETTINGS ---------
 
 "------ SPLITJION SETTINGS --------
-
-"---- VIM-JAVACOMPLETE2  SETTINGS -----
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 "----------VIM-GO SETTINGS-----------
 function! s:build_go_files()

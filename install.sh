@@ -23,7 +23,6 @@ $BREW install --HEAD universal-ctags/universal-ctags/universal-ctags
 $BREW install kubectl
 $BREW install docker
 $BREW install awscli
-$BREW install aws-cdk
 $BREW install kubernetes-helm
 $BREW install terraform
 $BREW install minikube
@@ -35,14 +34,11 @@ $BREW install maven
 
 #install casks
 $BREW cask install java
-$BREW cask install google-cloud-sdk
 $BREW cask install google-chrome
 $BREW cask install google-backup-and-sync
 $BREW cask install android-messages
 $BREW cask install slack
-$BREW cask install drawio
 $BREW cask install intellij-idea-ce
-$BREW cask install parallels
 
 
 #setup environment installed by brew

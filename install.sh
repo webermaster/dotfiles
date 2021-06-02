@@ -14,6 +14,11 @@ mkdir -p $BREWDIR && curl -L https://github.com/Homebrew/brew/tarball/master | t
 #install brew cask
 BREW=~/Developer/homebrew/bin/brew
 
+#java
+$BREW install java
+sudo ln -sfn ~/Developer/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+$BREW install maven
+
 #install kegs
 $BREW install vim
 $BREW install tmux
@@ -29,16 +34,12 @@ $BREW install minikube
 $BREW install hyperkit
 $BREW install k9s
 
-#java
-$BREW install java
-$BREW install maven
-
 #install casks
-$BREW cask install google-chrome
-$BREW cask install google-backup-and-sync
-$BREW cask install android-messages
-$BREW cask install slack
-$BREW cask install intellij-idea-ce
+$BREW install --cask google-chrome
+$BREW install --cask google-backup-and-sync
+$BREW install --cask android-messages
+$BREW install --cask slack
+$BREW install --cask intellij-idea-ce
 
 
 #setup environment installed by brew

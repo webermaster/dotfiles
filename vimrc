@@ -39,7 +39,7 @@ augroup xml
     autocmd FileType xml setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
-augroup xml
+augroup json
     autocmd FileType json setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
@@ -67,10 +67,8 @@ Plugin 'scrooloose/NERDTree'            " advanced file browser
 Plugin 'majutsushi/tagbar'              " language tag browser
 Plugin 'scrooloose/syntastic'           " syntax checking
 Plugin 'ctrlpvim/ctrlp.vim'             " file finder
-Plugin 'tpope/vim-fugitive'             " git plugin
 
 "---------- Language Specific -----
-Plugin 'hashivim/vim-terraform'         " terraform plugin
 Plugin 'fatih/vim-go'                   " go plugin
 Plugin 'SirVer/ultisnips'               " extra snipits for go
 Plugin 'AndrewRadev/splitjoin.vim'      " utilisnip for go
@@ -114,8 +112,6 @@ let g:tagbar_show_linenumbers = 2
 
 "---------- CTRLP SETTINGS ------------
 
-"---------- FUGITIVE SETTINGS ---------
-
 "------ UTILINSIPS SETTINGS ---------
 
 "------ SPLITJION SETTINGS --------
@@ -146,7 +142,4 @@ let g:go_list_type = 'quickfix'
 let g:go_fmt_command = 'goimports'
 let g:go_autodetect_gopath = 1
 let g:go_version_warning = 0
-
-"----------TERRAFORM SETTINGS-----------
-let g:terraform_fmt_on_save=1
 

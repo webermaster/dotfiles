@@ -25,18 +25,11 @@ $BREW install tmux
 $BREW install watch
 $BREW install go
 $BREW install --HEAD universal-ctags/universal-ctags/universal-ctags
-$BREW install kubectl
-$BREW install docker
 $BREW install awscli
-$BREW install kubernetes-helm
-$BREW install terraform
-$BREW install minikube
-$BREW install hyperkit
-$BREW install k9s
 
 #install casks
 $BREW install --cask google-chrome
-$BREW install --cask google-backup-and-sync
+$BREW install --cask google-drive
 $BREW install --cask android-messages
 $BREW install --cask slack
 $BREW install --cask intellij-idea-ce

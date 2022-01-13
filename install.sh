@@ -87,6 +87,14 @@ mkdir -p ~/Documents/go/src
 mkdir -p ~/Documents/go/bin
 mkdir -p ~/Documents/go/pkg
 
-#set git diff tool
+#set git preferences
+cat << EOF >> ~/.gitignore_global
+*~
+.*.swp
+.DS_Store
+EOF
+git config --global core.editor vim
+git config --global core.autocrlf input
+git config --global core.excludesfile ~/.gitignore_global
 git config --global merge.tool vimdiff
 git config --global merge.conflictstyle diff3

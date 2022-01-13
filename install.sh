@@ -20,6 +20,7 @@ sudo ln -sfn ~/Developer/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/
 $BREW install maven
 
 #install kegs
+$BREW install git-secrets
 $BREW install vim
 $BREW install tmux
 $BREW install watch

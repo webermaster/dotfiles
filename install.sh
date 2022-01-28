@@ -34,6 +34,7 @@ $BREW install --cask google-drive
 $BREW install --cask android-messages
 $BREW install --cask slack
 $BREW install --cask intellij-idea-ce
+$BREW install --cask session-manager-plugin
 
 
 #setup environment installed by brew

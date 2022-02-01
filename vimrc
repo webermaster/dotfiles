@@ -69,6 +69,7 @@ Plugin 'scrooloose/syntastic'           " syntax checking
 Plugin 'ctrlpvim/ctrlp.vim'             " file finder
 
 "---------- Language Specific -----
+Plugin 'davidhalter/jedi-vim'           " python autocomplete
 Plugin 'fatih/vim-go'                   " go plugin
 Plugin 'SirVer/ultisnips'               " extra snipits for go
 Plugin 'AndrewRadev/splitjoin.vim'      " utilisnip for go

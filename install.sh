@@ -27,6 +27,7 @@ $BREW install watch
 $BREW install go
 $BREW install --HEAD universal-ctags/universal-ctags/universal-ctags
 $BREW install awscli
+$BREW install mermaid-cli
 
 #install casks
 $BREW install --cask google-chrome

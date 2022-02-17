@@ -60,19 +60,21 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'           " plugin manager
 Plugin 'edkolev/tmuxline.vim'           " vim-airline like tmux bar
-Plugin 'nanotech/jellybeans.vim'        " my chosen theme
+Plugin 'tpope/vim-fugitive'             " git integration for vim
 Plugin 'vim-airline/vim-airline'        " super awesome status bar
-Plugin 'vim-airline/vim-airline-themes' " airline themes
+Plugin 'cohlin/vim-colorschemes'        " darcula theme for airline
 Plugin 'scrooloose/NERDTree'            " advanced file browser
 Plugin 'majutsushi/tagbar'              " language tag browser
 Plugin 'scrooloose/syntastic'           " syntax checking
 Plugin 'ctrlpvim/ctrlp.vim'             " file finder
 
 "---------- Language Specific -----
+Plugin 'davidhalter/jedi-vim'           " python autocomplete
 Plugin 'fatih/vim-go'                   " go plugin
+Plugin 'hashivim/vim-terraform'         " terraform plugin
+Plugin 'uarun/vim-protobuf'             " .proto file syntax highlghting
 Plugin 'SirVer/ultisnips'               " extra snipits for go
 Plugin 'AndrewRadev/splitjoin.vim'      " utilisnip for go
-Plugin 'uarun/vim-protobuf'             " .proto file syntax highlghting
 
 call vundle#end()
 filetype plugin indent on               " file detection
@@ -80,7 +82,7 @@ filetype plugin indent on               " file detection
 
 "---------- JELLYBEANS SETTINGS -------
 "set background=dark
-colorscheme jellybeans
+colorscheme py-darcula
 
 "----------- TMUXLINE SETTINGS --------
 let g:tmuxline_separators = {
@@ -94,7 +96,11 @@ let g:tmuxline_separators = {
 let g:airline_detect_paste = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_theme = 'jellybeans'
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#branch#empty_message = ''
+let g:airline#extensions#branch#displayed_head_limit = 10
+let g:airline#extensions#branch#format = 2
+let g:airline_theme = 'darcula'
 
 "--------- NERDTREE settings ---------
 map <Leader>o :NERDTreeToggle<CR>

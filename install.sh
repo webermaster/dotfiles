@@ -20,12 +20,14 @@ sudo ln -sfn ~/Developer/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/
 $BREW install maven
 
 #install kegs
+$BREW install git-secrets
 $BREW install vim
 $BREW install tmux
 $BREW install watch
 $BREW install go
 $BREW install --HEAD universal-ctags/universal-ctags/universal-ctags
 $BREW install awscli
+$BREW install mermaid-cli
 
 #install casks
 $BREW install --cask google-chrome
@@ -33,6 +35,7 @@ $BREW install --cask google-drive
 $BREW install --cask android-messages
 $BREW install --cask slack
 $BREW install --cask intellij-idea-ce
+$BREW install --cask session-manager-plugin
 
 
 #setup environment installed by brew
@@ -86,6 +89,14 @@ mkdir -p ~/Documents/go/src
 mkdir -p ~/Documents/go/bin
 mkdir -p ~/Documents/go/pkg
 
-#set git diff tool
+#set git preferences
+cat << EOF >> ~/.gitignore_global
+*~
+.*.swp
+.DS_Store
+EOF
+git config --global core.editor vim
+git config --global core.autocrlf input
+git config --global core.excludesfile ~/.gitignore_global
 git config --global merge.tool vimdiff
 git config --global merge.conflictstyle diff3

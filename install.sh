@@ -82,8 +82,6 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 #get plugins
 vim -c 'PluginInstall' -c 'GoInstallBinaries' -c 'qa!'
 
-minikube config set driver hyperkit
-
 #setup go workspace
 mkdir -p ~/Documents/go/src
 mkdir -p ~/Documents/go/bin

@@ -12,7 +12,7 @@ rm -rf $BREWDIR
 mkdir -p $BREWDIR && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $BREWDIR
 
 #alias brew executable for rest of script
-BREW=~/Developer/homebrew/bin/brew
+BREW=${BREWDIR}/bin/brew
 
 #java
 $BREW install java

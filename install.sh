@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#make may for fresh install
+#make way for fresh install
 BREWDIR=~/Developer/homebrew
 mv ~/.profile ~/.profile.old
 mv ~/.vim ~/.vim.old
@@ -11,7 +11,7 @@ rm -rf $BREWDIR
 #install Homebrew
 mkdir -p $BREWDIR && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $BREWDIR
 
-#install brew cask
+#alias brew executable for rest of script
 BREW=~/Developer/homebrew/bin/brew
 
 #java
@@ -27,9 +27,9 @@ $BREW install watch
 $BREW install go
 $BREW install --HEAD universal-ctags/universal-ctags/universal-ctags
 $BREW install awscli
-$BREW install mermaid-cli
 
 #install casks
+$BREW install --cask drawio
 $BREW install --cask google-chrome
 $BREW install --cask google-drive
 $BREW install --cask android-messages

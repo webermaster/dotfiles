@@ -2,10 +2,11 @@
 
 #make way for fresh install
 BREWDIR=~/Developer/homebrew
-mv ~/.profile ~/.profile.old
-mv ~/.vim ~/.vim.old
-mv ~/.vimrc ~/.vimrc.old
-mv ~/.tmux.conf ~/.tmux.conf.old
+rm  ~/.profile
+rm -rf ~/.vim
+rm  ~/.vimrc
+rm -rf ~/.tmux
+rm  ~/.tmux.conf
 rm -rf $BREWDIR
 
 #install Homebrew
@@ -20,6 +21,7 @@ sudo ln -sfn ~/Developer/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/
 $BREW install maven
 
 #install kegs
+$BREW install python3
 $BREW install git-secrets
 $BREW install vim
 $BREW install tmux
@@ -27,9 +29,12 @@ $BREW install watch
 $BREW install go
 $BREW install --HEAD universal-ctags/universal-ctags/universal-ctags
 $BREW install awscli
+$BREW install kubernetes-cli
+$BREW install docker
 
 #install casks
 $BREW install --cask drawio
+$BREW install --cask minkube
 $BREW install --cask google-chrome
 $BREW install --cask google-drive
 $BREW install --cask android-messages
@@ -47,23 +52,18 @@ cat << EOF >> ~/.profile
 #ALIASES
 alias ls='ls -lFGh'
 alias brewup='brew update; brew prune; brew cleanup; brew doctor'
-alias mssh='ssh -i ~/.minikube/machines/minikube/id_rsa docker@$(minikube ip)'
 
 #CREATE ENVIRONMENT VARIABLES
 export JAVA_HOME=`/usr/libexec/java_home`
-export GOPATH=~/Documents/go
-export GOROOT=$CELLAR/go/$GOP
-export GO111MODULE=on
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export EDITOR=vim
+export GOPATH=\$HOME/bin
 
 export BREW_HOME=~/Developer/homebrew
 CELLAR=\$BREW_HOME/Cellar
 
 #ADD ENVIRONMENT VARIABLES TO THE PATH
-export PATH=\$BREW_HOME/bin:\$PATH:\\
-\$GOROOT/bin:\\
-\$GOPATH/bin
+export PATH=\$BREW_HOME/bin:\$GOPATH/bin:\$PATH
 
 EOF
 

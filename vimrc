@@ -69,7 +69,6 @@ Plugin 'scrooloose/syntastic'           " syntax checking
 Plugin 'ctrlpvim/ctrlp.vim'             " file finder
 
 "---------- Language Specific -----
-Plugin 'davidhalter/jedi-vim'           " python autocomplete
 Plugin 'fatih/vim-go'                   " go plugin
 Plugin 'hashivim/vim-terraform'         " terraform plugin
 Plugin 'uarun/vim-protobuf'             " .proto file syntax highlghting

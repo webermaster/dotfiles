@@ -41,6 +41,7 @@ $BREW install --cask android-messages
 $BREW install --cask slack
 $BREW install --cask intellij-idea-ce
 $BREW install --cask session-manager-plugin
+$BREW install --cask raspberry-pi-imager
 
 
 #setup environment installed by brew
@@ -83,12 +84,12 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 vim -c 'PluginInstall' -c 'GoInstallBinaries' -c 'qa!'
 
 #setup go workspace
-mkdir -p ~/Documents/go/src
-mkdir -p ~/Documents/go/bin
-mkdir -p ~/Documents/go/pkg
+mkdir -p ~/go/src
+mkdir -p ~/go/bin
+mkdir -p ~/go/pkg
 
 #set git preferences
-cat << EOF >> ~/.gitignore_global
+cat << EOF > ~/.gitignore_global
 *~
 .*.swp
 .DS_Store

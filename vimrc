@@ -47,6 +47,10 @@ augroup tf
     autocmd FileType tf setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
+augroup md
+    autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+augroup END
+
 " Act like D and C
 nnoremap Y y$
 nnoremap <Leader>a :cclose<CR>

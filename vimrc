@@ -48,7 +48,7 @@ augroup tf
 augroup END
 
 augroup md
-    autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+    autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
 augroup END
 
 " Act like D and C
@@ -152,3 +152,6 @@ let g:go_fmt_command = 'goimports'
 let g:go_autodetect_gopath = 1
 let g:go_version_warning = 0
 
+"-------VIM-MARKDOWN-----------
+let g:markdown_fenced_languages = ['go', 'python', 'bash=sh', 'java', 'haskell', 'clojure']
+let g:markdown_syntax_conceal = 0

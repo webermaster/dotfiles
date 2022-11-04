@@ -66,6 +66,7 @@ Plugin 'VundleVim/Vundle.vim'           " plugin manager
 Plugin 'edkolev/tmuxline.vim'           " vim-airline like tmux bar
 Plugin 'tpope/vim-fugitive'             " git integration for vim
 Plugin 'vim-airline/vim-airline'        " super awesome status bar
+Plugin 'nanotech/jellybeans.vim'        " my chosen theme
 Plugin 'cohlin/vim-colorschemes'        " darcula theme for airline
 Plugin 'scrooloose/NERDTree'            " advanced file browser
 Plugin 'majutsushi/tagbar'              " language tag browser
@@ -84,8 +85,9 @@ filetype plugin indent on               " file detection
 "------------ PLUGINS END --------------
 
 "---------- JELLYBEANS SETTINGS -------
-"set background=dark
-colorscheme py-darcula
+set background=dark
+colorscheme jellybeans
+"colorscheme py-darcula
 
 "----------- TMUXLINE SETTINGS --------
 let g:tmuxline_separators = {

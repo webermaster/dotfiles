@@ -109,8 +109,6 @@ let g:airline#extensions#branch#format = 2
 "let g:airline_theme = 'darcula'
 let g:airline_theme = 'jellybeans'
 
->>>>>>> Stashed changes
-
 "--------- NERDTREE settings ---------
 map <Leader>o :NERDTreeToggle<CR>
 augroup ProjectDrawer

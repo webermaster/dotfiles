@@ -105,7 +105,8 @@ let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#branch#empty_message = ''
 let g:airline#extensions#branch#displayed_head_limit = 10
 let g:airline#extensions#branch#format = 2
-let g:airline_theme = 'darcula'
+"let g:airline_theme = 'darcula'
+let g:airline_theme = 'jellybeans'
 
 "--------- NERDTREE settings ---------
 map <Leader>o :NERDTreeToggle<CR>

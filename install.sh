@@ -31,17 +31,19 @@ $BREW install --HEAD universal-ctags/universal-ctags/universal-ctags
 $BREW install awscli
 $BREW install kubernetes-cli
 $BREW install docker
+$BREW install wireguard-tools
+$BREW install arduino-cli
 
 #install casks
 $BREW install --cask drawio
-$BREW install --cask minkube
 $BREW install --cask google-chrome
 $BREW install --cask google-drive
-$BREW install --cask android-messages
 $BREW install --cask slack
 $BREW install --cask intellij-idea-ce
 $BREW install --cask session-manager-plugin
 $BREW install --cask raspberry-pi-imager
+$BREW install --cask protonmail-bridge
+$BREW install --cask ultimaker-cura
 
 
 #setup environment installed by brew

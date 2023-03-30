@@ -66,6 +66,7 @@ Plugin 'VundleVim/Vundle.vim'           " plugin manager
 Plugin 'edkolev/tmuxline.vim'           " vim-airline like tmux bar
 Plugin 'tpope/vim-fugitive'             " git integration for vim
 Plugin 'vim-airline/vim-airline'        " super awesome status bar
+Plugin 'vim-airline/vim-airline-themes' " status bar themes
 Plugin 'nanotech/jellybeans.vim'        " my chosen theme
 Plugin 'cohlin/vim-colorschemes'        " darcula theme for airline
 Plugin 'scrooloose/NERDTree'            " advanced file browser
@@ -107,6 +108,8 @@ let g:airline#extensions#branch#displayed_head_limit = 10
 let g:airline#extensions#branch#format = 2
 "let g:airline_theme = 'darcula'
 let g:airline_theme = 'jellybeans'
+
+>>>>>>> Stashed changes
 
 "--------- NERDTREE settings ---------
 map <Leader>o :NERDTreeToggle<CR>

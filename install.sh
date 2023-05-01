@@ -62,6 +62,9 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 export EDITOR=vim
 export GOPATH=\$HOME/bin
 
+source \$(find / -name 'git-prompt.sh' -type f -print -quit 2>/dev/null | perl -pe 'chomp')
+export PS1='\h:\W \u$(__git_ps1)\$ '
+
 export BREW_HOME=~/Developer/homebrew
 CELLAR=\$BREW_HOME/Cellar
 

@@ -32,7 +32,8 @@ $BREW install awscli
 $BREW install kubernetes-cli
 $BREW install docker
 $BREW install wireguard-tools
-$BREW install arduino-cli
+$BREW install hyperkit
+$BREW install minikube
 
 #install casks
 $BREW install --cask drawio
@@ -42,7 +43,6 @@ $BREW install --cask slack
 $BREW install --cask intellij-idea-ce
 $BREW install --cask session-manager-plugin
 $BREW install --cask raspberry-pi-imager
-$BREW install --cask protonmail-bridge
 $BREW install --cask ultimaker-cura
 
 
@@ -54,13 +54,12 @@ cat << EOF >> ~/.profile
 
 #ALIASES
 alias ls='ls -lFGh'
-alias brewup='brew update; brew prune; brew cleanup; brew doctor'
 
 #CREATE ENVIRONMENT VARIABLES
 export JAVA_HOME=`/usr/libexec/java_home`
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export EDITOR=vim
-export GOPATH=\$HOME/bin
+export GOPATH=~/go
 
 source \$(find / -name 'git-prompt.sh' -type f -print -quit 2>/dev/null | perl -pe 'chomp')
 export PS1='\h:\W \u$(__git_ps1)\$ '
@@ -70,6 +69,8 @@ CELLAR=\$BREW_HOME/Cellar
 
 #ADD ENVIRONMENT VARIABLES TO THE PATH
 export PATH=\$BREW_HOME/bin:\$GOPATH/bin:\$PATH
+
+test `which minikube` && (minikube status || minikube start) && eval $(minikube docker-env)
 
 EOF
 

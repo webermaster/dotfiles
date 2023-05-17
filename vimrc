@@ -159,3 +159,6 @@ let g:go_version_warning = 0
 "-------VIM-MARKDOWN-----------
 let g:markdown_fenced_languages = ['go', 'python', 'bash=sh', 'java', 'haskell', 'clojure']
 let g:markdown_syntax_conceal = 0
+
+"--------VIM-TERRAFORM--------
+let g:terraform_fmt_on_save = 1

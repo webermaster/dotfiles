@@ -36,6 +36,8 @@ $BREW install hyperkit
 $BREW install minikube
 
 #install casks
+$BREW install --cask devdocs
+$BREW install --cask devtoys
 $BREW install --cask drawio
 $BREW install --cask google-chrome
 $BREW install --cask google-drive

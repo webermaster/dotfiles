@@ -34,6 +34,8 @@ $BREW install docker
 $BREW install wireguard-tools
 $BREW install hyperkit
 $BREW install minikube
+$BREW install aws-cdk
+$BREW install terraform
 
 #install casks
 $BREW install --cask devdocs

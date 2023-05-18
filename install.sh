@@ -38,8 +38,6 @@ $BREW install aws-cdk
 $BREW install terraform
 
 #install casks
-$BREW install --cask devdocs
-$BREW install --cask devtoys
 $BREW install --cask drawio
 $BREW install --cask google-chrome
 $BREW install --cask google-drive
@@ -58,6 +56,7 @@ cat << EOF >> ~/.profile
 
 #ALIASES
 alias ls='ls -lFGh'
+alias mup='test `which minikube` && (minikube status || minikube start) && eval $(minikube docker-env)'
 
 #CREATE ENVIRONMENT VARIABLES
 export JAVA_HOME=`/usr/libexec/java_home`

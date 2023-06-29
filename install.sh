@@ -30,12 +30,13 @@ $BREW install go
 $BREW install --HEAD universal-ctags/universal-ctags/universal-ctags
 $BREW install awscli
 $BREW install kubernetes-cli
+$BREW install helm
 $BREW install docker
 $BREW install wireguard-tools
 $BREW install hyperkit
 $BREW install minikube
-$BREW install aws-cdk
 $BREW install terraform
+$BREW install helm
 
 #install casks
 $BREW install --cask drawio
@@ -46,6 +47,7 @@ $BREW install --cask intellij-idea-ce
 $BREW install --cask session-manager-plugin
 $BREW install --cask raspberry-pi-imager
 $BREW install --cask ultimaker-cura
+$BREW install --cask pandora
 
 
 #setup environment installed by brew
@@ -72,9 +74,6 @@ CELLAR=\$BREW_HOME/Cellar
 
 #ADD ENVIRONMENT VARIABLES TO THE PATH
 export PATH=\$BREW_HOME/bin:\$GOPATH/bin:\$PATH
-
-test `which minikube` && (minikube status || minikube start) && eval $(minikube docker-env)
-
 EOF
 
 #symlink .vimrc

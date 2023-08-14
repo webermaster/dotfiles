@@ -47,7 +47,6 @@ $BREW install --cask intellij-idea-ce
 $BREW install --cask session-manager-plugin
 $BREW install --cask raspberry-pi-imager
 $BREW install --cask ultimaker-cura
-$BREW install --cask pandora
 
 
 #setup environment installed by brew

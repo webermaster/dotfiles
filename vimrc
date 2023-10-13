@@ -35,6 +35,11 @@ augroup yaml
     autocmd FileType yaml,yml setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
+augroup cfn_template
+    autocmd BufNewFile,BufFilePre,BufRead *.template set syntax=yaml
+    autocmd BufNewFile,BufFilePre,BufRead *.template setlocal tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
+
 augroup xml
     autocmd FileType xml setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END

@@ -58,7 +58,7 @@ cat << EOF >> ~/.profile
 #ALIASES
 alias ls='ls -lFGh'
 alias mup='test `which minikube` && (minikube status || minikube start) && eval $(minikube docker-env)'
-alias todos='grep -r --exclude-dir={.git/,**.swp} TODO .'
+alias todos='grep -r --exclude-dir=.git/ --exclude=*.swp TODO .'
 
 #CREATE ENVIRONMENT VARIABLES
 export JAVA_HOME=`/usr/libexec/java_home`

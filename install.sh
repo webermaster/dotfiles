@@ -56,6 +56,9 @@ ln -s "$(cd "$(dirname "$0")"; pwd -P )"/vimrc ~/.vimrc
 #symlink .tmux.conf
 ln -s "$(cd "$(dirname "$0")"; pwd -P )"/tmux.conf ~/.tmux.conf
 
+#symlink .tmux-statusline-colors.conf
+ln -s "$(cd "$(dirname "$0")"; pwd -P )"/tmux-statusline-colors.conf ~/.tmux/.tmux-statusline-colors.conf
+
 #install Vundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 

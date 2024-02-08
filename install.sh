@@ -4,6 +4,7 @@
 BREWDIR=~/Developer/homebrew
 rm  ~/.profile
 rm -rf ~/.vim
+rm -rf ~/.config/nvim
 rm  ~/.vimrc
 rm -rf ~/.tmux
 rm  ~/.tmux.conf
@@ -21,7 +22,6 @@ sudo ln -sfn ~/Developer/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/
 $BREW install maven
 
 brew bundle --file "$(cd "$(dirname "$0")"; pwd -P )"/Brewfile
-
 
 #setup environment installed by brew
 CELLAR=$BREWDIR/Cellar
@@ -67,6 +67,16 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 #get plugins
 vim -c 'PluginInstall' -c 'GoInstallBinaries' -c 'qa!'
+
+#setup neovim config from old
+mkdir -p ~/.config/nvim
+cat << EOF >> ~/.config/nvim/init.vim
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath = &runtimepath
+source ~/.vimrc
+EOF
+
+
 
 #setup go workspace
 mkdir -p ~/go/src

@@ -68,6 +68,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'           " plugin manager
+Plugin 'tpope/vim-fugitive'             " git plugin'
 Plugin 'edkolev/tmuxline.vim'           " vim-airline like tmux bar
 Plugin 'vim-airline/vim-airline'        " super awesome status bar
 Plugin 'vim-airline/vim-airline-themes' " status bar themes

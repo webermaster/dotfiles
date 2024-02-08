@@ -20,33 +20,7 @@ $BREW install java
 sudo ln -sfn ~/Developer/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 $BREW install maven
 
-#install kegs
-$BREW install python3
-$BREW install git-secrets
-$BREW install vim
-$BREW install tmux
-$BREW install watch
-$BREW install go
-$BREW install --HEAD universal-ctags/universal-ctags/universal-ctags
-$BREW install awscli
-$BREW install kubernetes-cli
-$BREW install helm
-$BREW install docker
-$BREW install wireguard-tools
-$BREW install hyperkit
-$BREW install minikube
-$BREW install terraform
-$BREW install helm
-
-#install casks
-$BREW install --cask drawio
-$BREW install --cask google-chrome
-$BREW install --cask google-drive
-$BREW install --cask slack
-$BREW install --cask intellij-idea-ce
-$BREW install --cask session-manager-plugin
-$BREW install --cask raspberry-pi-imager
-$BREW install --cask ultimaker-cura
+brew bundle --file "$(cd "$(dirname "$0")"; pwd -P )"/Brewfile
 
 
 #setup environment installed by brew

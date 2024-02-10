@@ -8,29 +8,27 @@ rm -rf ~/.config/nvim
 rm  ~/.vimrc
 rm -rf ~/.tmux
 rm  ~/.tmux.conf
-rm -rf $BREWDIR
+rm -rf ${BREWDIR}
 
 #install Homebrew
-mkdir -p $BREWDIR && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C $BREWDIR
+mkdir -p ${BREWDIR} && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ${BREWDIR}
 
 #alias brew executable for rest of script
 BREW=${BREWDIR}/bin/brew
 
-#java
-$BREW install java
-sudo ln -sfn ~/Developer/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
-$BREW install maven
+${BREW} bundle --file "$(cd "$(dirname "$0")"; pwd -P )"/Brewfile
 
-brew bundle --file "$(cd "$(dirname "$0")"; pwd -P )"/Brewfile
+sudo ln -sfn ~/Developer/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 
 #setup environment installed by brew
-CELLAR=$BREWDIR/Cellar
-GOP=`cd $CELLAR/go/* && echo "${PWD##*/}"`
+CELLAR=${BREWDIR}/Cellar
+GOP=`cd ${CELLAR}/go/* && echo "${PWD##*/}"`
 
 cat << EOF >> ~/.profile
 
 #ALIASES
 alias ls='ls -lFGh'
+alias vim='nvim'
 alias mup='test `which minikube` && (minikube status || minikube start) && eval $(minikube docker-env)'
 alias todos='grep -r --exclude-dir=.git/ --exclude=*.swp TODO .'
 
@@ -40,14 +38,13 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 export EDITOR=vim
 export GOPATH=~/go
 
-source \$(find / -name 'git-prompt.sh' -type f -print -quit 2>/dev/null | perl -pe 'chomp')
+source \$(find /Library/Developer/CommandLineTools -name 'git-prompt.sh' -type f -print -quit 2>/dev/null | perl -pe 'chomp')
 export PS1='\h:\W \u$(__git_ps1)\$ '
 
 export BREW_HOME=~/Developer/homebrew
-CELLAR=\$BREW_HOME/Cellar
 
 #ADD ENVIRONMENT VARIABLES TO THE PATH
-export PATH=\$BREW_HOME/bin:\$GOPATH/bin:\$PATH
+export PATH=\${BREW_HOME}/bin:\${GOPATH}/bin:\${PATH}
 EOF
 
 #symlink .vimrc
@@ -70,10 +67,18 @@ vim -c 'PluginInstall' -c 'GoInstallBinaries' -c 'qa!'
 
 #setup neovim config from old
 mkdir -p ~/.config/nvim
+${BREWDIR}/bin/python3 -m venv ~/.config/nvim/.venv/
+source ~/.config/nvim/.venv/bin/activate
+~/.config/nvim/.venv/bin/pip3 install neovim
+NV_PYTHON=$(which python3)
 cat << EOF >> ~/.config/nvim/init.vim
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vimrc
+let g:python3_host_prog = '${NV_PYTHON}'
+let g:loaded_node_provider = 0
+let g:loaded_perl_provider = 0
+let g:loaded_ruby_provider = 0
 EOF
 
 

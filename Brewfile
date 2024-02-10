@@ -1,5 +1,10 @@
 tap "homebrew/bundle"
+tap "mas-cli/tap"
 tap "universal-ctags/universal-ctags"
+
+brew "mas-cli/tap/mas"
+
+mas "Xcode", id: 497_799_835
 
 brew "awscli"
 brew "docker"
@@ -7,10 +12,12 @@ brew "git-secrets"
 brew "go"
 brew "helm"
 brew "hyperkit"
+brew "java"
 brew "kubernetes-cli"
+brew "maven"
 brew "minikube"
 brew "neovim"
-brew "python@3.11"
+brew "python"
 brew "terraform"
 brew "tmux"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]

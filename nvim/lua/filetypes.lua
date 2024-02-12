@@ -17,21 +17,7 @@ augroup('yaml', {
 })
 autocmd({'FileType'}, {
     group = 'yaml',
-    pattern = {'yaml', 'yaml'},
-    command = 'setlocal tabstop=2 softtabstop=2 shiftwidth=2'
-})
-
-augroup('cfn_template', {
-    clear = false
-})
-autocmd({'BufNewFile','BufFilePre','BufRead'}, {
-    group = 'cfn_template',
-    pattern = {'*.template'},
-    command = 'set syntax=yaml'
-})
-autocmd({'BufNewFile','BufFilePre','BufRead'}, {
-    group = 'cfn_template',
-    pattern = {'*.template'},
+    pattern = {'yaml', 'yml'},
     command = 'setlocal tabstop=2 softtabstop=2 shiftwidth=2'
 })
 
@@ -68,5 +54,19 @@ augroup('lua', {
 autocmd({'FileType'}, {
     group = 'lua',
     pattern = {'lua'},
+    command = 'setlocal tabstop=2 softtabstop=2 shiftwidth=2'
+})
+
+augroup('cfn_template', {
+    clear = false
+})
+autocmd({'BufNewFile','BufFilePre','BufRead'}, {
+    group = 'cfn_template',
+    pattern = {'*.template'},
+    command = 'set syntax=yaml'
+})
+autocmd({'BufNewFile','BufFilePre','BufRead'}, {
+    group = 'cfn_template',
+    pattern = {'*.template'},
     command = 'setlocal tabstop=2 softtabstop=2 shiftwidth=2'
 })

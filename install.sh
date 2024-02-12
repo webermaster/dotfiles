@@ -3,9 +3,7 @@
 #make way for fresh install
 BREWDIR=~/Developer/homebrew
 rm  ~/.profile
-rm -rf ~/.vim
 rm -rf ~/.config/nvim
-rm  ~/.vimrc
 rm -rf ~/.tmux
 rm  ~/.tmux.conf
 rm -rf ${BREWDIR}
@@ -48,7 +46,7 @@ export PATH=\${BREW_HOME}/bin:\${GOPATH}/bin:\${PATH}
 EOF
 
 #symlink .vimrc
-ln -s "$(cd "$(dirname "$0")"; pwd -P )"/vimrc ~/.vimrc
+ln -s "$(cd "$(dirname "$0")"; pwd -P )"/nvim ~/.config/nvim/
 
 #symlink .tmux.conf
 ln -s "$(cd "$(dirname "$0")"; pwd -P )"/tmux.conf ~/.tmux.conf
@@ -65,23 +63,11 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 #get plugins
 vim -c 'PluginInstall' -c 'GoInstallBinaries' -c 'qa!'
 
-#setup neovim config from old
-mkdir -p ~/.config/nvim
+#setup neovim python3 venv
 ${BREWDIR}/bin/python3 -m venv ~/.config/nvim/.venv/
 source ~/.config/nvim/.venv/bin/activate
 ~/.config/nvim/.venv/bin/pip3 install neovim
-NV_PYTHON=$(which python3)
-cat << EOF >> ~/.config/nvim/init.vim
-set runtimepath^=~/.vim runtimepath+=~/.vim/after
-let &packpath = &runtimepath
-source ~/.vimrc
-let g:python3_host_prog = '${NV_PYTHON}'
-let g:loaded_node_provider = 0
-let g:loaded_perl_provider = 0
-let g:loaded_ruby_provider = 0
-EOF
-
-
+deactivate
 
 #setup go workspace
 mkdir -p ~/go/src
@@ -93,6 +79,7 @@ cat << EOF > ~/.gitignore_global
 *~
 .*.swp
 .DS_Store
+**/.venv/
 EOF
 git config --global core.editor vim
 git config --global core.autocrlf input

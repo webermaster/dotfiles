@@ -4,6 +4,7 @@
 BREWDIR=~/Developer/homebrew
 rm  ~/.profile
 rm -rf ~/.config/nvim
+rm -rf ~/.local/share/nvim
 rm -rf ~/.tmux
 rm  ~/.tmux.conf
 rm -rf ${BREWDIR}
@@ -45,6 +46,9 @@ export BREW_HOME=~/Developer/homebrew
 export PATH=\${BREW_HOME}/bin:\${GOPATH}/bin:\${PATH}
 EOF
 
+#symlink .profile to .bashrc for nvim
+ln -s ~/.profile ~/.bashrc
+
 #symlink .vimrc
 ln -s "$(cd "$(dirname "$0")"; pwd -P )"/nvim ~/.config/nvim/
 
@@ -54,14 +58,11 @@ ln -s "$(cd "$(dirname "$0")"; pwd -P )"/tmux.conf ~/.tmux.conf
 #symlink .tmux-statusline-colors.conf
 ln -s "$(cd "$(dirname "$0")"; pwd -P )"/tmux-statusline-colors.conf ~/.tmux/.tmux-statusline-colors.conf
 
-#install Vundle
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
 #install TPM
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 #get plugins
-vim -c 'PluginInstall' -c 'GoInstallBinaries' -c 'qa!'
+${BREWDIR}/bin/nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
 #setup neovim python3 venv
 ${BREWDIR}/bin/python3 -m venv ~/.config/nvim/.venv/

@@ -31,3 +31,5 @@ g.go_autodetect_gopath = 1
 g.go_version_warning = 0
 g.go_metalinter_autosave = 1
 g.go_auto_sameids = 1
+g.go_def_mode='gopls'
+g.go_info_mode='gopls'

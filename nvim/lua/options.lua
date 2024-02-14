@@ -3,7 +3,6 @@ local cmd = vim.cmd
 local o = vim.opt
 local g = vim.g
 
-cmd('syntax on')                          -- Turn syntax highlighting on
 
 o.compatible = false                      -- Don't care about compatibility with old vi
 o.autoread = true                         -- Automatically read changed files

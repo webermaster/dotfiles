@@ -13,4 +13,5 @@ require('config.nerdtree')
 require('config.tagbar')
 require('config.vim-go')
 require('config.vim-terraform')
+require('config.haskell-vim')
 

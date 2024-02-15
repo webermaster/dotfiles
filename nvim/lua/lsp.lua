@@ -20,15 +20,20 @@ require('mason').setup{
 
 require('mason-lspconfig').setup({
     -- A list of servers to automatically install if they're not already installed
-    ensure_installed = { 'jdtls', 'jedi_language_server' }
+    ensure_installed = { 'hls', 'jdtls', 'jedi_language_server' }
 })
 
 local lspconfig = require('lspconfig')
 -- python
 lspconfig.jedi_language_server.setup({})
+
 -- java
+lspconfig.jdtls.setup({})
 
 -- haskell
+lspconfig.hls.setup({
+  filetypes = { 'haskell', 'lhaskell', 'cabal' },
+})
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions

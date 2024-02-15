@@ -40,6 +40,7 @@ return require('packer').startup(function(use)
 
   -- Language specific plugins
   use 'fatih/vim-go'                      -- go plugin
+  use 'neovimhaskell/haskell-vim'         -- haskell syntax highlighting
   use 'hashivim/vim-terraform'            -- terraform plugin
   use 'uarun/vim-protobuf'                -- .proto file syntax highlighting
   use 'SirVer/ultisnips'                  -- extras snipits for go

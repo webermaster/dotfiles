@@ -15,8 +15,9 @@ mkdir -p ${BREWDIR} && curl -L https://github.com/Homebrew/brew/tarball/master |
 #alias brew executable for rest of script
 BREW=${BREWDIR}/bin/brew
 
+# Install tools
 ${BREW} bundle --file "$(cd "$(dirname "$0")"; pwd -P )"/Brewfile
-
+curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | BOOTSTRAP_HASKELL_NONINTERACTIVE=1 sh
 sudo ln -sfn ~/Developer/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 
 #setup environment installed by brew

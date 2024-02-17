@@ -123,8 +123,6 @@ augroup END
 nmap <Leader>p :TagbarToggle<CR>
 let g:tagbar_show_linenumbers = 2
 
-"----------- SYNTASTIC SETTINGS -------
-
 "---------- CTRLP SETTINGS ------------
 
 "------ UTILINSIPS SETTINGS ---------

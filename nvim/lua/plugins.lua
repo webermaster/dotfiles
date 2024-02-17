@@ -24,27 +24,32 @@ vim.cmd([[
 ]])
 
 return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'            -- packer itself
-  use 'williamboman/mason.nvim'           -- lsp packe manager
-  use 'williamboman/mason-lspconfig.nvim' -- lsp-mason integration
-  use 'neovim/nvim-lspconfig'             -- convenient lsp configs for native client
-  use 'tpope/vim-fugitive'                -- git plugin
-  use 'edkolev/tmuxline.vim'              -- vim-airline like tmux bar
-  use 'vim-airline/vim-airline'           -- super awesome status bar
-  use 'vim-airline/vim-airline-themes'    -- status bar themes
-  use 'nanotech/jellybeans.vim'           -- my chosen theme
-  use 'scrooloose/NERDTree'               -- advanced files browser
-  use 'preservim/tagbar'                  -- language tag browser
-  use 'scrooloose/syntastic'              -- syntax checking
-  use 'ctrlpvim/ctrlp.vim'                -- file finder
+  use 'wbthomason/packer.nvim'              -- packer itself
+  use 'williamboman/mason.nvim'             -- lsp packe manager
+  use 'williamboman/mason-lspconfig.nvim'   -- lsp-mason integration
+  use 'neovim/nvim-lspconfig'               -- convenient lsp configs for native client
+  use 'hrsh7th/cmp-nvim-lsp'                -- autocomplete setup
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/nvim-cmp'
+  use 'quangnguyen30192/cmp-nvim-ultisnips'
+  use 'tpope/vim-fugitive'                  -- git plugin
+  use 'edkolev/tmuxline.vim'                -- vim-airline like tmux bar
+  use 'vim-airline/vim-airline'             -- super awesome status bar
+  use 'vim-airline/vim-airline-themes'      -- status bar themes
+  use 'nanotech/jellybeans.vim'             -- my chosen theme
+  use 'scrooloose/NERDTree'                 -- advanced files browser
+  use 'preservim/tagbar'                    -- language tag browser
+  use 'ctrlpvim/ctrlp.vim'                  -- file finder
 
   -- Language specific plugins
-  use 'fatih/vim-go'                      -- go plugin
-  use 'neovimhaskell/haskell-vim'         -- haskell syntax highlighting
-  use 'hashivim/vim-terraform'            -- terraform plugin
-  use 'uarun/vim-protobuf'                -- .proto file syntax highlighting
-  use 'SirVer/ultisnips'                  -- extras snipits for go
-  use 'AndrewRadev/splitjoin.vim'         -- utilisnip for go
+  use 'fatih/vim-go'                        -- go plugin
+  use 'neovimhaskell/haskell-vim'           -- haskell syntax highlighting
+  use 'hashivim/vim-terraform'              -- terraform plugin
+  use 'uarun/vim-protobuf'                  -- .proto file syntax highlighting
+  use 'SirVer/ultisnips'                    -- extras snipits for go
+  use 'AndrewRadev/splitjoin.vim'           -- utilisnip for go
 
   if packer_bootstrap then
     require('packer').sync()

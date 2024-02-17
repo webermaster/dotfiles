@@ -1,5 +1,4 @@
 
-
 require('options')
 require('filetypes')
 require('keymaps')
@@ -14,4 +13,3 @@ require('config.tagbar')
 require('config.vim-go')
 require('config.vim-terraform')
 require('config.haskell-vim')
-

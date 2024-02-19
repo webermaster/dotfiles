@@ -23,21 +23,33 @@ vim.cmd([[
   augroup end
 ]])
 
+local load_treesitter = function()
+        local tsi = require('nvim-treesitter.install')
+        local ts_update = tsi.update({ with_sync = true })
+        ts_update()
+end
+
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'              -- packer itself
   use 'williamboman/mason.nvim'             -- lsp packe manager
   use 'williamboman/mason-lspconfig.nvim'   -- lsp-mason integration
   use 'neovim/nvim-lspconfig'               -- convenient lsp configs for native client
+  use {                                     -- synatx highlighting
+    'nvim-treesitter/nvim-treesitter',
+    run = load_treesitter
+  }
   use 'hrsh7th/cmp-nvim-lsp'                -- autocomplete setup
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'hrsh7th/nvim-cmp'
-  use 'quangnguyen30192/cmp-nvim-ultisnips'
+  use 'hrsh7th/cmp-buffer'                  -- autocomplete setup
+  use 'hrsh7th/cmp-path'                    -- autocomplete setup
+  use 'hrsh7th/cmp-cmdline'                 -- autocomplete setup
+  use 'hrsh7th/nvim-cmp'                    -- autocomplete setup
+  use 'quangnguyen30192/cmp-nvim-ultisnips' -- autocomplete setup
   use 'tpope/vim-fugitive'                  -- git plugin
   use 'edkolev/tmuxline.vim'                -- vim-airline like tmux bar
-  use 'vim-airline/vim-airline'             -- super awesome status bar
-  use 'vim-airline/vim-airline-themes'      -- status bar themes
+  use {                                     -- autocomplete setup
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }
   use 'nanotech/jellybeans.vim'             -- my chosen theme
   use 'scrooloose/NERDTree'                 -- advanced files browser
   use 'preservim/tagbar'                    -- language tag browser
@@ -45,7 +57,6 @@ return require('packer').startup(function(use)
 
   -- Language specific plugins
   use 'fatih/vim-go'                        -- go plugin
-  use 'neovimhaskell/haskell-vim'           -- haskell syntax highlighting
   use 'hashivim/vim-terraform'              -- terraform plugin
   use 'uarun/vim-protobuf'                  -- .proto file syntax highlighting
   use 'SirVer/ultisnips'                    -- extras snipits for go

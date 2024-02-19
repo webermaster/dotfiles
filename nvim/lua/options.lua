@@ -28,6 +28,7 @@ o.completeopt = {'menu', 'menuone'}       -- Show popup menu, even if there is o
 o.pumheight = 10                          -- Completion window max size
 o.mouse = "a"                             -- Enable mouse for all modes
 o.encoding = "utf-8"                      -- UTF-8 encoding
+o.showtabline = 2                         --  always show tabline
 
 g.python3_host_prog = vim.fn.expand('~') .. '/.config/nvim/.venv/bin/python3'
 g.loaded_node_provider = 0

@@ -2,7 +2,6 @@
 local cmd = vim.cmd
 local o = vim.opt
 
--- Jellybeans settings
 o.background = 'dark'
 local colorscheme = 'jellybeans'
 

@@ -110,6 +110,8 @@ let g:airline#extensions#branch#empty_message = ''
 let g:airline#extensions#branch#displayed_head_limit = 10
 let g:airline#extensions#branch#format = 2
 let g:airline_theme = 'jellybeans'
+let g:airline_powerline_fonts = 1
+let g:airline_skip_empty_sections = 1
 
 "--------- NERDTREE settings ---------
 map <Leader>o :NERDTreeToggle<CR>

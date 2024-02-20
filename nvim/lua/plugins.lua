@@ -50,8 +50,10 @@ return require('packer').startup(function(use)
     'nvim-lualine/lualine.nvim',
     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
-  use 'nanotech/jellybeans.vim'             -- my chosen theme
-  use 'scrooloose/NERDTree'                 -- advanced files browser
+  use 'folke/tokyonight.nvim'               -- my chosen theme
+  use 'preservim/NERDTree'                  -- advanced files browser
+  use 'vwxyutarooo/nerdtree-devicons-syntax'
+  use 'ryanoasis/vim-devicons'
   use 'preservim/tagbar'                    -- language tag browser
   use 'ctrlpvim/ctrlp.vim'                  -- file finder
 

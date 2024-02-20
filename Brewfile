@@ -1,6 +1,7 @@
 tap "homebrew/bundle"
 tap "mas-cli/tap"
 tap "universal-ctags/universal-ctags"
+tap "homebrew/cask-fonts"
 
 brew "mas-cli/tap/mas"
 
@@ -25,7 +26,9 @@ brew "universal-ctags"
 brew "vim"
 brew "watch"
 brew "wireguard-tools"
+brew "font-hack-nerd-font"
 
+cask "iterm2"
 cask "drawio"
 cask "google-chrome"
 cask "google-drive"

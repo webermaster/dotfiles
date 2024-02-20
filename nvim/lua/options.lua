@@ -3,7 +3,6 @@ local cmd = vim.cmd
 local o = vim.opt
 local g = vim.g
 
-
 o.compatible = false                      -- Don't care about compatibility with old vi
 o.autoread = true                         -- Automatically read changed files
 o.number = true                           -- Set line numbers

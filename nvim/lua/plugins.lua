@@ -38,6 +38,12 @@ return require('packer').startup(function(use)
     'nvim-treesitter/nvim-treesitter',
     run = load_treesitter
   }
+  use {                                     -- toggle comments
+      'numToStr/Comment.nvim',
+      config = function()
+          require('Comment').setup()
+      end
+  }
   use 'hrsh7th/cmp-nvim-lsp'                -- autocomplete setup
   use 'hrsh7th/cmp-buffer'                  -- autocomplete setup
   use 'hrsh7th/cmp-path'                    -- autocomplete setup

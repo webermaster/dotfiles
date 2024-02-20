@@ -56,9 +56,6 @@ ln -s "$(cd "$(dirname "$0")"; pwd -P )"/nvim ~/.config/nvim/
 #symlink .tmux.conf
 ln -s "$(cd "$(dirname "$0")"; pwd -P )"/tmux.conf ~/.tmux.conf
 
-#symlink .tmux-statusline-colors.conf
-ln -s "$(cd "$(dirname "$0")"; pwd -P )"/tmux-statusline-colors.conf ~/.tmux/.tmux-statusline-colors.conf
-
 #install TPM
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 

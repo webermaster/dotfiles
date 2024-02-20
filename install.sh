@@ -52,15 +52,20 @@ ln -s ~/.profile ~/.bashrc
 
 #symlink .vimrc
 ln -s "$(cd "$(dirname "$0")"; pwd -P )"/nvim ~/.config/nvim/
+ln -s "$(cd "$(dirname "$0")"; pwd -P )"/vimrc ~/.vimrc
 
 #symlink .tmux.conf
 ln -s "$(cd "$(dirname "$0")"; pwd -P )"/tmux.conf ~/.tmux.conf
+
+# install Vundle
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 #install TPM
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 #get plugins
 ${BREWDIR}/bin/nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+${BREWDIR}/bin/vim -c 'PluginInstall' -c 'qa!'
 
 #setup neovim python3 venv
 ${BREWDIR}/bin/python3 -m venv ~/.config/nvim/.venv/

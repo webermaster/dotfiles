@@ -24,9 +24,9 @@ vim.cmd([[
 ]])
 
 local load_treesitter = function()
-        local tsi = require('nvim-treesitter.install')
-        local ts_update = tsi.update({ with_sync = true })
-        ts_update()
+  local tsi = require('nvim-treesitter.install')
+  local ts_update = tsi.update({ with_sync = true })
+  ts_update()
 end
 
 return require('packer').startup(function(use)

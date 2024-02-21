@@ -45,8 +45,6 @@ export BREW_HOME=~/Developer/homebrew
 
 #ADD ENVIRONMENT VARIABLES TO THE PATH
 export PATH=\${BREW_HOME}/bin:\${GOPATH}/bin:\${PATH}
-
-[ -f "~/.ghcup/env" ] && source "~/.ghcup/env"
 EOF
 
 #symlink .profile to .bashrc for nvim

@@ -2,8 +2,8 @@
 require('options')
 require('filetypes')
 require('keymaps')
-require('colorscheme')
 require('plugins')
+require('colorscheme')
 require('lsp')
 
 require('config.treesitter')

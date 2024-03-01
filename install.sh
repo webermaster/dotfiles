@@ -26,6 +26,7 @@ GOP=`cd ${CELLAR}/go/* && echo "${PWD##*/}"`
 
 #symlink profile
 ln -s "$(cd "$(dirname "$0")"; pwd -P )"/profile ~/.profile
+ln -s "$(cd "$(dirname "$0")"; pwd -P )"/profile ~/.bashrc
 
 #symlink .vimrc
 ln -s "$(cd "$(dirname "$0")"; pwd -P )"/nvim ~/.config/nvim/

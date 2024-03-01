@@ -6,12 +6,6 @@ local autocmd = vim.api.nvim_create_autocmd
 cmd('syntax on')                          -- Turn syntax highlighting on
 cmd('filetype plugin indent on')          -- file detection
 
--- Enter automatically into the files directory
-autocmd({'BufEnter'}, {
-    pattern = {'*'},
-    command = 'silent! lcd %:p:h'
-})
-
 -- Set tab settings for specific file types
 augroup('yaml', {
     clear = false

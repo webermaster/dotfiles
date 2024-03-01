@@ -35,7 +35,7 @@ return {
 
       require('mason-lspconfig').setup({
           -- A list of servers to automatically install if they're not already installed
-          ensure_installed = { 'clangd', 'jdtls', 'jedi_language_server' }
+          ensure_installed = { 'clangd', 'gopls', 'jdtls', 'jedi_language_server', 'rust_analyzer' }
       })
 
       local cmp = require('cmp')
@@ -112,6 +112,11 @@ return {
         capabilities = capabilities
       })
 
+      -- go 
+      lspconfig.gopls.setup({
+        capabilities = capabilities
+      })
+
       -- python
       lspconfig.jedi_language_server.setup({
         capabilities = cpapbilities
@@ -120,6 +125,11 @@ return {
       -- java
       lspconfig.jdtls.setup({
         capabilities = cpapbilities
+      })
+
+      -- rust
+      lspconfig.rust_analyzer.setup({
+        capabilities = capabilities
       })
 
       -- Global mappings.

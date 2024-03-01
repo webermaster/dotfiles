@@ -1,5 +1,4 @@
 return {
-    'uarun/vim-protobuf',
     'SirVer/ultisnips',
     'AndrewRadev/splitjoin.vim', 
     { 
@@ -9,6 +8,5 @@ return {
       end
     },
     'tpope/vim-fugitive', 
-    'ryanoasis/vim-devicons',
-    'ctrlpvim/ctrlp.vim'
+    'ryanoasis/vim-devicons'
 }

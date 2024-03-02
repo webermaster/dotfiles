@@ -1,12 +1,13 @@
 return {
+    'ctrlpvim/ctrlp.vim',
     'SirVer/ultisnips',
-    'AndrewRadev/splitjoin.vim', 
-    { 
+    'AndrewRadev/splitjoin.vim',
+    {
       'numToStr/Comment.nvim',
       config = function()
           require('Comment').setup()
       end
     },
-    'tpope/vim-fugitive', 
+    'tpope/vim-fugitive',
     'ryanoasis/vim-devicons'
 }

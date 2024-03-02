@@ -40,12 +40,12 @@ return {
           lualine_z = {}
         },
         tabline = {
-          lualine_a = {},
-          lualine_b = {'branch'},
-          lualine_c = {'filename'},
+          lualine_a = {'branch'},
+          lualine_b = {'buffers'},
+          lualine_c = {},
           lualine_x = {},
           lualine_y = {},
-          lualine_z = {}
+          lualine_z = {'tabs'}
         },
         extensions = {}
       })

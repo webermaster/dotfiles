@@ -8,6 +8,5 @@ return {
           require('Comment').setup()
       end
     },
-    'tpope/vim-fugitive',
     'ryanoasis/vim-devicons'
 }

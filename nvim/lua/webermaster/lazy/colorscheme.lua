@@ -1,8 +1,8 @@
 return {
     {
-      "folke/tokyonight.nvim",
+      'folke/tokyonight.nvim',
       config = function()
-        require("tokyonight").setup({
+        require('tokyonight').setup({
         })
         vim.o.background = 'dark'
         vim.cmd[[colorscheme tokyonight-night]]

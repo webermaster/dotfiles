@@ -103,7 +103,7 @@ return {
       keymap('n', '<leader>vd', d.open_float)
       keymap('n', '[d', d.goto_prev)
       keymap('n', ']d', d.goto_next)
-      keymap('n', '<leader>vd', d.setloclist)
+      keymap('n', '<leader>vq', d.setloclist)
 
       -- Use LspAttach autocommand to only map the following keys
       -- after the language server attaches to the current buffer

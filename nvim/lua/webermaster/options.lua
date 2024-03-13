@@ -24,8 +24,8 @@ o.splitbelow = true                       -- Horizontal windows should split to 
 o.showmode = false                        -- We show the mode with airline or lightline
 o.completeopt = {'menu', 'menuone'}       -- Show popup menu, even if there is one entry
 o.pumheight = 10                          -- Completion window max size
-o.mouse = "a"                             -- Enable mouse for all modes
-o.encoding = "utf-8"                      -- UTF-8 encoding
+o.mouse = 'a'                             -- Enable mouse for all modes
+o.encoding = 'utf-8'                      -- UTF-8 encoding
 o.showtabline = 2                         -- always show tabline
 o.hidden = false                          -- disable hidden buffers
 

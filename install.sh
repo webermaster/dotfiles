@@ -1,5 +1,5 @@
 #!/bin/sh
-####
+
 #make way for fresh install
 BREWDIR=~/Developer/homebrew
 rm  ~/.profile

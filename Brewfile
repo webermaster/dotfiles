@@ -19,6 +19,7 @@ brew "kubernetes-cli"
 brew "maven"
 brew "minikube"
 brew "neovim"
+brew "nodejs" # for Github Copilot integration in neovim only
 brew "python"
 brew "terraform"
 brew "tmux"

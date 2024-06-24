@@ -1,12 +1,4 @@
 return {
-    {
-      'github/copilot.vim',
-      config = function()
-        vim.g.copilot_filetypes = {
-          ['*'] = false
-        }
-      end
-    },
     'ctrlpvim/ctrlp.vim',
     {
       "L3MON4D3/LuaSnip",

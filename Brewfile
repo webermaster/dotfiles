@@ -2,6 +2,7 @@ Itap "homebrew/bundle"
 tap "mas-cli/tap"
 tap "universal-ctags/universal-ctags"
 tap "homebrew/cask-fonts"
+tap "fluxcd/tap"
 
 brew "mas-cli/tap/mas"
 

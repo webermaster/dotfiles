@@ -1,4 +1,4 @@
-Itap "homebrew/bundle"
+tap "homebrew/bundle"
 tap "mas-cli/tap"
 tap "universal-ctags/universal-ctags"
 tap "homebrew/cask-fonts"

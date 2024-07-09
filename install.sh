@@ -17,7 +17,6 @@ BREW=${BREWDIR}/bin/brew
 
 # Install tools
 ${BREW} bundle --file "$(cd "$(dirname "$0")"; pwd -P )"/Brewfile
-curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | BOOTSTRAP_HASKELL_NONINTERACTIVE=1 sh
 sudo ln -sfn ~/Developer/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 
 #setup environment installed by brew
@@ -42,7 +41,6 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 #get plugins
-${BREWDIR}/bin/nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 ${BREWDIR}/bin/vim -c 'PluginInstall' -c 'qa!'
 
 #setup neovim python3 venv

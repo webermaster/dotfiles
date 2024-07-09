@@ -80,7 +80,7 @@ return {
 
       require('mason-lspconfig').setup({
         -- A list of servers to automatically install if they're not already installed
-        ensure_installed = { 'clangd', 'gopls', 'jdtls', 'jedi_language_server', 'lua_ls', 'rust_analyzer' },
+        ensure_installed = { 'gopls', 'jedi_language_server', 'lua_ls', 'rust_analyzer' },
         handlers = {
           function(server_name) -- default handler (optional)
             require("lspconfig")[server_name].setup {

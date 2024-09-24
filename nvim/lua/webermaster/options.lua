@@ -27,7 +27,11 @@ o.mouse = 'a'                             -- Enable mouse for all modes
 o.encoding = 'utf-8'                      -- UTF-8 encoding
 o.showtabline = 2                         -- always show tabline
 o.hidden = false                          -- disable hidden buffers
+o.termguicolors = true                    -- optionally enable 24-bit colour
 
+
+g.loaded_netrw = 1                        -- disable netrw at the very start of your init.lua
+g.loaded_netrwPlugin = 1                  -- disable netrw at the very start of your init.lua
 g.python3_host_prog = vim.fn.expand('~') .. '/.config/nvim/.venv/bin/python3'
 g.loaded_node_provider = 0
 g.loaded_perl_provider = 0

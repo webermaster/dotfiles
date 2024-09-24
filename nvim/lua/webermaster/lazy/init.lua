@@ -1,5 +1,4 @@
 return {
-    'ctrlpvim/ctrlp.vim',
     {
       "L3MON4D3/LuaSnip",
       -- follow latest release.
@@ -13,5 +12,4 @@ return {
           require('Comment').setup()
       end
     },
-    'ryanoasis/vim-devicons'
 }

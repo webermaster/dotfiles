@@ -10,7 +10,9 @@ return {
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
       'hrsh7th/nvim-cmp',
-      'saadparwaiz1/cmp_luasnip'
+      'saadparwaiz1/cmp_luasnip',
+      'L3MON4D3/LuaSnip',
+      'j-hui/fidget.nvim'
     },
     config = function()
       local d = vim.diagnostic
@@ -20,6 +22,56 @@ return {
 
 
       local cmp = require('cmp')
+      local cmp_lsp = require("cmp_nvim_lsp")
+      local capabilities = vim.tbl_deep_extend(
+          "force",
+          {},
+          vim.lsp.protocol.make_client_capabilities(),
+          cmp_lsp.default_capabilities())
+
+      require("fidget").setup({})
+      require('mason').setup{
+        ui = {
+          icons = {
+            package_installed = '✓',
+            package_pending = '➜',
+            package_uninstalled = '✗'
+          }
+        }
+      }
+
+      require('mason-lspconfig').setup({
+        -- A list of servers to automatically install if they're not already installed
+        ensure_installed = {
+          'gopls',
+          'jdtls',
+          'jedi_language_server',
+          'lua_ls'
+        },
+        handlers = {
+          function(server_name) -- default handler (optional)
+            require("lspconfig")[server_name].setup {
+              capabilities = capabilities
+            }
+          end,
+          ["lua_ls"] = function()
+            local lspconfig = require("lspconfig")
+            lspconfig.lua_ls.setup {
+              capabilities = capabilities,
+              settings = {
+                Lua = {
+                  diagnostics = {
+                    globals = { "vim" }
+                  }
+                }
+              }
+            }
+          end
+        }
+
+      })
+
+      local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
       cmp.setup({
         snippet = {
@@ -28,15 +80,16 @@ return {
           end,
         },
         window = {
-          -- completion = cmp.config.window.bordered(),
-          -- documentation = cmp.config.window.bordered(),
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
         },
         mapping = cmp.mapping.preset.insert({
-          ['<C-n>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-m>'] = cmp.mapping.scroll_docs(4),
-          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<C-n>'] = cmp.mapping.select_prev_item(cmp_select),
+          ['<C-m>'] = cmp.mapping.select_next_item(cmp_select),
+          ["<C-Space>"] = cmp.mapping.complete(),
           ['<C-e>'] = cmp.mapping.abort(),
-          ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+          ['<Tab>'] = cmp.mapping.confirm({ select = true })
         }),
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
@@ -64,32 +117,6 @@ return {
         })
       })
 
-
-      -- Set up lspconfig.
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-      require('mason').setup{
-        ui = {
-          icons = {
-            package_installed = '✓',
-            package_pending = '➜',
-            package_uninstalled = '✗'
-          }
-        }
-      }
-
-      require('mason-lspconfig').setup({
-        -- A list of servers to automatically install if they're not already installed
-        ensure_installed = { 'gopls', 'jedi_language_server', 'lua_ls', 'rust_analyzer' },
-        handlers = {
-          function(server_name) -- default handler (optional)
-            require("lspconfig")[server_name].setup {
-              capabilities = capabilities
-            }
-          end
-        }
-
-      })
 
       -- Global mappings.
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -130,5 +157,7 @@ return {
         end,
       })
     end
+
+
   }
 }

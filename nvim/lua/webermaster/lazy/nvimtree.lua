@@ -7,6 +7,8 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     config = function()
+      local keymap = vim.keymap.set
+      keymap('n', '<Leader>o', ':NvimTreeToggle<CR>', {})
       require("nvim-tree").setup({
          sort = {
            sorter = "case_sensitive",

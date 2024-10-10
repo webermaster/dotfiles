@@ -8,19 +8,49 @@ return {
     },
     config = function()
       require('go').setup()
-      local augroup = vim.api.nvim_create_autocmd
-      local go_grp = vim.api.nvim_create_augroup('go', {})
-      augroup({'BufWritePre'}, {
-        pattern = '*.go',
+      local keymap = vim.keymap.set
+      local augroup = vim.api.nvim_create_augroup
+      local autocmd = vim.api.nvim_create_autocmd
+      local go_grp = augroup('go', {})
+      autocmd({'BufWritePre'}, {
+        pattern = 'go',
         callback = function()
          require('go.format').goimport()
         end,
         group = go_grp,
       })
-      local keymap = vim.keymap.set
-      local augroup = vim.api.nvim_create_augroup
-      local autocmd = vim.api.nvim_create_autocmd
-      local GoGroup = augroup('Go', {})
+      autocmd({'FileType'}, {
+        pattern = 'go',
+        command = 'nmap <leader>b :GoBuild<CR>'
+      })
+      autocmd({'FileType'}, {
+        pattern = 'go',
+        command = 'nmap <leader>g :GoRun<CR>'
+      })
+      autocmd({'FileType'}, {
+        pattern = 'go',
+        command = 'nmap <leader>t :GoTest<CR>'
+      })
+      autocmd({'FileType'}, {
+        pattern = 'go',
+        command = 'nmap <leader>c :GoCoverage<CR>'
+      })
+      autocmd({'FileType'}, {
+        pattern = 'go',
+        command = 'nmap <leader>i :GoImpl<CR>'
+      })
+      autocmd({'FileType'}, {
+        pattern = 'go',
+        command = 'nmap <leader>d :GoDoc<CR>'
+      })
+      autocmd({'FileType'}, {
+        pattern = 'go',
+        command = 'nmap <leader>s :GoAltV<CR>'
+      })
+      autocmd({'FileType'}, {
+        pattern = 'go',
+        command = 'nmap <leader>f :GoIfErr<CR>'
+      })
     end,
     event = {'CmdlineEnter'},
     ft = {'go', 'gomod'},

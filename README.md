@@ -1,10 +1,10 @@
 # dotfiles
 
 - Sets up a few aliases
-- Installs Homebrew and Caskroom
+- Installs Homebrew
 - Installs some stuff with Homebrew
 - Creates .profile and sets needed Environment variables
-- Installs vundle for vim and installs plugins defined in `vimrc` for vim and `plugins.lua` for neovim
+- Installs vundle for vim, and lazy for neovim and installs plugins defined in `vimrc` for vim and `lazy/` for neovim
 - Enabless $TERM colors in tmux
 
 To find out what is installed check out `install.sh`

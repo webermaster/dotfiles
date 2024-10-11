@@ -4,8 +4,8 @@ return {
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
         require('telescope').setup({
-          file_ignore_patterns = { 
-            ".venv" 
+          file_ignore_patterns = {
+            ".venv"
           }
         })
 

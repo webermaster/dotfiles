@@ -57,10 +57,10 @@ augroup('cfn_template', {
 })
 autocmd({'BufNewFile','BufFilePre','BufRead'}, {
     group = 'cfn_template',
-    pattern = {'template'},
-    command = 'set syntax=yaml'
+    pattern = {'*.template'},
+    command = 'set filetype=yaml'
 })
-autocmd({'BufNewFile','BufFilePre','BufRead'}, {
+autocmd({'FileType'}, {
     group = 'cfn_template',
     pattern = {'template'},
     command = 'setlocal tabstop=2 softtabstop=2 shiftwidth=2'

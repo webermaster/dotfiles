@@ -8,6 +8,7 @@ brew "mas-cli/tap/mas"
 mas "Xcode", id: 497_799_835
 
 brew "awscli"
+brew "aws-sam-cli"
 brew "git-secrets"
 brew "go"
 brew "gotags"
@@ -29,7 +30,7 @@ brew "watch"
 brew "wireguard-tools"
 
 cask "docker"
-cask "font-hack-nerd-font"
+cask "font-jetbrains-mono-nerd-font"
 cask "drawio"
 cask "google-chrome"
 cask "google-drive"

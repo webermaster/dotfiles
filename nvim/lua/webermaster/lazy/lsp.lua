@@ -46,7 +46,8 @@ return {
           'gopls',
           'jdtls',
           'jedi_language_server',
-          'lua_ls'
+          'lua_ls',
+          'rust_analyzer'
         },
         handlers = {
           function(server_name) -- default handler (optional)

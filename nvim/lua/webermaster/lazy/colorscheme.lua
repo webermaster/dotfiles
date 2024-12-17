@@ -1,11 +1,11 @@
 return {
     {
-      'folke/tokyonight.nvim',
+      'ellisonleao/gruvbox.nvim',
       config = function()
-        require('tokyonight').setup({
-        })
+        -- require('tokyonight').setup({
+        -- })
         vim.o.background = 'dark'
-        vim.cmd[[colorscheme tokyonight-night]]
+        vim.cmd[[colorscheme gruvbox]]
       end
     }
 }

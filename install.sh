@@ -1,31 +1,31 @@
 #!/bin/sh
 
-#make way for fresh install
-BREWDIR=~/Developer/homebrew
-rm  ~/.profile
-rm -rf ~/.config/nvim
-rm -rf ~/.local/share/nvim
-rm -rf ~/.tmux
-rm  ~/.tmux.conf
-rm -rf ${BREWDIR}
-
-#install Homebrew
-mkdir -p ${BREWDIR} && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ${BREWDIR}
-
-#alias brew executable for rest of script
+#	#make way for fresh install
+#	BREWDIR=~/Developer/homebrew
+#	rm  ~/.profile
+#	rm -rf ~/.config/nvim
+#	rm -rf ~/.local/share/nvim
+#	rm -rf ~/.tmux
+#	rm  ~/.tmux.conf
+#	rm -rf ${BREWDIR}
+#	
+#	#install Homebrew
+#	mkdir -p ${BREWDIR} && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ${BREWDIR}
+#	
+#	#alias brew executable for rest of script
 BREW=${BREWDIR}/bin/brew
-
-# Install tools
-${BREW} bundle --file "$(cd "$(dirname "$0")"; pwd -P )"/Brewfile
-sudo ln -sfn ~/Developer/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
-
-#setup environment installed by brew
-CELLAR=${BREWDIR}/Cellar
-GOP=`cd ${CELLAR}/go/* && echo "${PWD##*/}"`
-
-#symlink profile
-ln -s "$(cd "$(dirname "$0")"; pwd -P )"/profile ~/.profile
-ln -s "$(cd "$(dirname "$0")"; pwd -P )"/profile ~/.bashrc
+#	
+#	# Install tools
+#	${BREW} bundle --file "$(cd "$(dirname "$0")"; pwd -P )"/Brewfile
+#	sudo ln -sfn ~/Developer/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+#	
+#	#setup environment installed by brew
+#	CELLAR=${BREWDIR}/Cellar
+#	GOP=`cd ${CELLAR}/go/* && echo "${PWD##*/}"`
+#	
+#	#symlink profile
+#	ln -s "$(cd "$(dirname "$0")"; pwd -P )"/profile ~/.profile
+#	ln -s "$(cd "$(dirname "$0")"; pwd -P )"/profile ~/.bashrc
 
 #symlink .vimrc
 ln -s "$(cd "$(dirname "$0")"; pwd -P )"/nvim ~/.config/nvim/

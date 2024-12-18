@@ -1,17 +1,17 @@
 return {
   {
-   "nvim-tree/nvim-tree.lua",
-    version = "*",
+   'nvim-tree/nvim-tree.lua',
+    version = '*',
     lazy = false,
     dependencies = {
-      "nvim-tree/nvim-web-devicons",
+      'nvim-tree/nvim-web-devicons',
     },
     config = function()
       local keymap = vim.keymap.set
       keymap('n', '<Leader>o', ':NvimTreeToggle<CR>', {})
-      require("nvim-tree").setup({
+      require('nvim-tree').setup({
          sort = {
-           sorter = "case_sensitive",
+           sorter = 'case_sensitive',
          },
          view = {
            width = 30,

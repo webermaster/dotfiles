@@ -22,14 +22,14 @@ return {
 
 
       local cmp = require('cmp')
-      local cmp_lsp = require("cmp_nvim_lsp")
+      local cmp_lsp = require('cmp_nvim_lsp')
       local capabilities = vim.tbl_deep_extend(
-          "force",
+          'force',
           {},
           vim.lsp.protocol.make_client_capabilities(),
           cmp_lsp.default_capabilities())
 
-      require("fidget").setup({})
+      require('fidget').setup({})
       require('mason').setup{
         ui = {
           icons = {
@@ -45,29 +45,45 @@ return {
         ensure_installed = {
           'gopls',
           'jdtls',
-          'jedi_language_server',
           'lua_ls',
+          'python-lsp-server',
           'rust_analyzer'
         },
         handlers = {
           function(server_name) -- default handler (optional)
-            require("lspconfig")[server_name].setup {
+            require('lspconfig')[server_name].setup {
               capabilities = capabilities
             }
           end,
-          ["lua_ls"] = function()
-            local lspconfig = require("lspconfig")
+          ['lua_ls'] = function()
+            local lspconfig = require('lspconfig')
             lspconfig.lua_ls.setup {
               capabilities = capabilities,
               settings = {
                 Lua = {
                   diagnostics = {
-                    globals = { "vim" }
+                    globals = { 'vim' }
                   }
                 }
               }
             }
-          end
+          end--,
+          -- ['python-lsp-server'] = function()
+          --   local lspconfig = require('lspconfig')
+          --   lspconfig.pylsp.setup {
+          --     capabilities = capabilities,
+          --     settings = {
+          --       plugins = {
+          --         pycodestyle = {
+          --           ignore = {'W'}
+          --         },
+          --         pydocstyle = {
+          --           ignore = {'W'}
+          --         }
+          --       }
+          --     }
+          --   }
+          -- end
         }
 
       })
@@ -87,7 +103,7 @@ return {
         mapping = cmp.mapping.preset.insert({
           ['<C-n>'] = cmp.mapping.select_prev_item(cmp_select),
           ['<C-m>'] = cmp.mapping.select_next_item(cmp_select),
-          ["<C-Space>"] = cmp.mapping.complete(),
+          ['<C-Space>'] = cmp.mapping.complete(),
           ['<C-e>'] = cmp.mapping.abort(),
           ['<C-y>'] = cmp.mapping.confirm({ select = true })
         }),
@@ -142,7 +158,7 @@ return {
           keymap('n', 'gr', buf.references, opts)
           keymap('n', 'gtd', buf.type_definition, opts)
           keymap('n', 'K', buf.hover, opts)
-          keymap("i", "<C-h>", buf.signature_help, opts)
+          keymap('i', '<C-h>', buf.signature_help, opts)
           keymap({ 'n', 'v' }, '<leader>vca', buf.code_action, opts)
           keymap('n', '<leader>vf', function()
             buf.format { async = true }
@@ -153,7 +169,7 @@ return {
             print(vim.inspect(buf.list_workspace_folders()))
           end, opts)
           keymap('n', '<leader>vwr', buf.remove_workspace_folder, opts)
-          keymap("n", "<leader>vws", buf.workspace_symbol, opts)
+          keymap('n', '<leader>vws', buf.workspace_symbol, opts)
         end,
       })
     end

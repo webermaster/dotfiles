@@ -20,6 +20,7 @@ return {
       local autocmd = vim.api.nvim_create_autocmd
       local keymap = vim.keymap.set
 
+      local util = require('lspconfig/util')
 
       local cmp = require('cmp')
       local cmp_lsp = require('cmp_nvim_lsp')
@@ -46,13 +47,30 @@ return {
           'gopls',
           'jdtls',
           'lua_ls',
-          'python-lsp-server',
+          'pylsp',
           'rust_analyzer'
         },
         handlers = {
           function(server_name) -- default handler (optional)
             require('lspconfig')[server_name].setup {
               capabilities = capabilities
+            }
+          end,
+          ['gopls'] = function()
+            local lspconfig = require('lspconfig')
+            lspconfig.pylsp.setup {
+              capabilities = capabilities,
+              filetypes = { "go", "gomod", "gowork", "gotmpl" },
+              root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+              settings = {
+                gopls = {
+                  completeUnimported = true,
+                  usePlaceholders = true,
+                  analyses = {
+                    unusedparams = true,
+                  },
+                },
+              },
             }
           end,
           ['lua_ls'] = function()
@@ -67,23 +85,22 @@ return {
                 }
               }
             }
-          end--,
-          -- ['python-lsp-server'] = function()
-          --   local lspconfig = require('lspconfig')
-          --   lspconfig.pylsp.setup {
-          --     capabilities = capabilities,
-          --     settings = {
-          --       plugins = {
-          --         pycodestyle = {
-          --           ignore = {'W'}
-          --         },
-          --         pydocstyle = {
-          --           ignore = {'W'}
-          --         }
-          --       }
-          --     }
-          --   }
-          -- end
+          end,
+          ['pylsp'] = function()
+            local lspconfig = require('lspconfig')
+            lspconfig.pylsp.setup {
+              capabilities = capabilities,
+              settings = {
+                pylsp = {
+                  plugins = {
+                    pycodestyle = {
+                      enabled = false,
+                    },
+                  },
+                }
+              }
+            }
+          end
         }
 
       })

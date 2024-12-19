@@ -58,10 +58,8 @@ return {
           end,
           ['gopls'] = function()
             local lspconfig = require('lspconfig')
-            lspconfig.pylsp.setup {
+            lspconfig.gopls.setup {
               capabilities = capabilities,
-              filetypes = { "go", "gomod", "gowork", "gotmpl" },
-              root_dir = util.root_pattern("go.work", "go.mod", ".git"),
               settings = {
                 gopls = {
                   completeUnimported = true,

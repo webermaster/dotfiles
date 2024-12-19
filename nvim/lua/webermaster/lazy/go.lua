@@ -8,7 +8,6 @@ return {
     },
     config = function()
       require('go').setup()
-      local keymap = vim.keymap.set
       local augroup = vim.api.nvim_create_augroup
       local autocmd = vim.api.nvim_create_autocmd
       local go_grp = augroup('go', {})

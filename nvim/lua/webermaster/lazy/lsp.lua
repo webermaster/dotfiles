@@ -20,8 +20,6 @@ return {
       local autocmd = vim.api.nvim_create_autocmd
       local keymap = vim.keymap.set
 
-      local util = require('lspconfig/util')
-
       local cmp = require('cmp')
       local cmp_lsp = require('cmp_nvim_lsp')
       local capabilities = vim.tbl_deep_extend(
@@ -44,6 +42,7 @@ return {
       require('mason-lspconfig').setup({
         -- A list of servers to automatically install if they're not already installed
         ensure_installed = {
+          'delve',
           'gopls',
           'jdtls',
           'lua_ls',

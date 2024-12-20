@@ -5,6 +5,7 @@ return {
     config = function()
         require('telescope').setup({
           file_ignore_patterns = {
+            '.git/',
             '.venv'
           }
         })

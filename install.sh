@@ -28,7 +28,8 @@ ln -s "$(cd "$(dirname "$0")"; pwd -P )"/profile ~/.profile
 ln -s "$(cd "$(dirname "$0")"; pwd -P )"/profile ~/.bashrc
 
 #symlink .vimrc
-ln -s "$(cd "$(dirname "$0")"; pwd -P )"/nvim ~/.config/nvim/
+mkdir -p ~/.config
+ln -s "$(cd "$(dirname "$0")"; pwd -P )"/nvim ~/.config
 ln -s "$(cd "$(dirname "$0")"; pwd -P )"/vimrc ~/.vimrc
 
 #symlink .tmux.conf

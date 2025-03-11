@@ -10,6 +10,7 @@ mas "Xcode", id: 497_799_835
 brew "aws-cdk"
 brew "awscli"
 brew "aws-sam-cli"
+brew "cidr"
 brew "csvlens"
 brew "eksctl"
 brew "flux"

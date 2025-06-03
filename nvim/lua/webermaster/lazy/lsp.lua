@@ -47,6 +47,7 @@ return {
           'lua_ls',
           'pylsp',
           'terraformls',
+          'ts_ls',
           'rust_analyzer'
         },
         handlers = {

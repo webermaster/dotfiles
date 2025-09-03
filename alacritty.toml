@@ -1,6 +1,6 @@
 [general]
 import = [
-    "~/.config/alacritty/rose-pine.toml"
+    "~/.config/alacritty/rose-pine-moon.toml"
 ]
 
 [window]
@@ -9,4 +9,4 @@ title = "Terminal"
 
 [font]
 normal = { family = "FiraCode Nerd Font", style = "Regular" }
-size = 16
+size = 18

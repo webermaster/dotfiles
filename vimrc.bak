@@ -73,16 +73,12 @@ Plugin 'vim-airline/vim-airline'        " super awesome status bar
 Plugin 'vim-airline/vim-airline-themes' " status bar themes
 Plugin 'nanotech/jellybeans.vim'        " my chosen theme
 Plugin 'scrooloose/NERDTree'            " advanced file browser
-Plugin 'majutsushi/tagbar'              " language tag browser
 Plugin 'scrooloose/syntastic'           " syntax checking
 Plugin 'ctrlpvim/ctrlp.vim'             " file finder
 
 "---------- Language Specific -----
-Plugin 'fatih/vim-go'                   " go plugin
 Plugin 'hashivim/vim-terraform'         " terraform plugin
 Plugin 'uarun/vim-protobuf'             " .proto file syntax highlghting
-Plugin 'SirVer/ultisnips'               " extra snipits for go
-Plugin 'AndrewRadev/splitjoin.vim'      " utilisnip for go
 
 call vundle#end()
 filetype plugin indent on               " file detection
@@ -131,33 +127,33 @@ let g:tagbar_show_linenumbers = 2
 "------ SPLITJION SETTINGS --------
 
 "----------VIM-GO SETTINGS-----------
-function! s:build_go_files()
-    let l:file = expand('%')
-    if l:file =~# '^\f\+_test\.go$'
-        call go#test#Test(0,1)
-    elseif l:file =~# '^\f\+\.go$'
-        call go#cmd#Build(0)
-    endif
-endfunction
-augroup go
-    autocmd FileType go nmap <Leader>b :<C-u>call <SID>build_go_files()<CR>
-    autocmd FileType go nmap <Leader>g <Plug>(go-run)
-    autocmd FileType go nmap <Leader>t <Plug>(go-test)
-    autocmd FileType go nmap <Leader>s <Plug>(go-alternate-vertical)
-    autocmd FileType go nmap <Leader>d <Plug>(go-doc-vertical)
-    autocmd FileType go nmap <Leader>db <Plug>(go-doc-browser)
-    autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
-    autocmd FileType go nmap <Leader>i :GoImpl<CR>
-    autocmd FileType go nmap <Leader>r <Plug>(go-rename)
-    autocmd FileType go vmap <Leader>f <Plug>(go-freevars)
-augroup END
-
-let g:go_list_type = 'quickfix'
-let g:go_fmt_command = 'goimports'
-let g:go_autodetect_gopath = 1
-let g:go_version_warning = 0
-let g:go_metalinter_autosave = 1
-let g:go_auto_sameids = 1
-
+" function! s:build_go_files()
+"     let l:file = expand('%')
+"     if l:file =~# '^\f\+_test\.go$'
+"         call go#test#Test(0,1)
+"     elseif l:file =~# '^\f\+\.go$'
+"         call go#cmd#Build(0)
+"     endif
+" endfunction
+" augroup go
+"     autocmd FileType go nmap <Leader>b :<C-u>call <SID>build_go_files()<CR>
+"     autocmd FileType go nmap <Leader>g <Plug>(go-run)
+"     autocmd FileType go nmap <Leader>t <Plug>(go-test)
+"     autocmd FileType go nmap <Leader>s <Plug>(go-alternate-vertical)
+"     autocmd FileType go nmap <Leader>d <Plug>(go-doc-vertical)
+"     autocmd FileType go nmap <Leader>db <Plug>(go-doc-browser)
+"     autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+"     autocmd FileType go nmap <Leader>i :GoImpl<CR>
+"     autocmd FileType go nmap <Leader>r <Plug>(go-rename)
+"     autocmd FileType go vmap <Leader>f <Plug>(go-freevars)
+" augroup END
+"
+" let g:go_list_type = 'quickfix'
+" let g:go_fmt_command = 'goimports'
+" let g:go_autodetect_gopath = 1
+" let g:go_version_warning = 0
+" let g:go_metalinter_autosave = 1
+" let g:go_auto_sameids = 1
+"
 "--------VIM-TERRAFORM--------
 let g:terraform_fmt_on_save = 1

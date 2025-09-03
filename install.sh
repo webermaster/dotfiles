@@ -5,9 +5,9 @@ BREWDIR=~/Developer/homebrew
 rm  ~/.profile
 rm -rf ~/.config/nvim
 rm -rf ~/.local/share/nvim
-rm -rf ~/.tmux
-rm  ~/.tmux.conf
 rm -rf ${BREWDIR}
+
+DOTFILES=$(cd "$(dirname "$0")"; pwd -P )
 
 #install Homebrew
 mkdir -p ${BREWDIR} && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ${BREWDIR}
@@ -16,7 +16,7 @@ mkdir -p ${BREWDIR} && curl -L https://github.com/Homebrew/brew/tarball/master |
 BREW=${BREWDIR}/bin/brew
 
 # Install tools
-${BREW} bundle --file "$(cd "$(dirname "$0")"; pwd -P )"/Brewfile
+${BREW} bundle --file "${DOTFILES}"/Brewfile
 sudo ln -sfn ~/Developer/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 
 #setup environment installed by brew
@@ -24,25 +24,15 @@ CELLAR=${BREWDIR}/Cellar
 GOP=`cd ${CELLAR}/go/* && echo "${PWD##*/}"`
 
 #symlink profile
-ln -s "$(cd "$(dirname "$0")"; pwd -P )"/profile ~/.profile
-ln -s "$(cd "$(dirname "$0")"; pwd -P )"/profile ~/.bashrc
+ln -s "${DOTFILES}"/profile ~/.profile
+ln -s "${DOTFILES}"/profile ~/.bashrc
 
-#symlink .vimrc
+#symlink neovim config
 mkdir -p ~/.config
-ln -s "$(cd "$(dirname "$0")"; pwd -P )"/nvim ~/.config
-ln -s "$(cd "$(dirname "$0")"; pwd -P )"/vimrc ~/.vimrc
+ln -s "${DOTFILES}"/nvim ~/.config
 
-#symlink .tmux.conf
-ln -s "$(cd "$(dirname "$0")"; pwd -P )"/tmux.conf ~/.tmux.conf
-
-# install Vundle
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
-#install TPM
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-#get plugins
-${BREWDIR}/bin/vim -c 'PluginInstall' -c 'qa!'
+#symlink .alacritty.toml
+ln -s "${DOTFILES}"/alacritty.conf ~/.config/alacritty.toml
 
 #setup neovim python3 venv
 ${BREWDIR}/bin/python3 -m venv ~/.config/nvim/.venv/
@@ -62,6 +52,7 @@ cat << EOF > ~/.gitignore_global
 .DS_Store
 **/.venv/
 EOF
+
 git config --global core.editor vim
 git config --global core.autocrlf input
 git config --global core.excludesfile ~/.gitignore_global

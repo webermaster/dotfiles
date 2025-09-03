@@ -1,21 +1,38 @@
 return {
   {
-    'folke/trouble.nvim',
-    config = function()
-      require('trouble').setup({})
+    "folke/trouble.nvim",
+    opts = {
+      icons = false,
+    },
+    config = function(_, opts)
+      local trouble = require("trouble")
 
-      vim.keymap.set('n', '<leader>tt', function()
-        require('trouble').toggle()
-      end)
+      trouble.setup(opts)
 
-      vim.keymap.set('n', '[t', function()
-        require('trouble').next({skip_groups = true, jump = true});
-      end)
+      -- Toggle document diagnostics
+      vim.keymap.set("n", "<leader>tt", function()
+        trouble.toggle("diagnostics")
+      end, { desc = "Toggle Trouble diagnostics" })
 
-      vim.keymap.set('n', ']t', function()
-        require('trouble').previous({skip_groups = true, jump = true});
-      end)
+      -- Workspace diagnostics
+      vim.keymap.set("n", "<leader>tT", function()
+        trouble.toggle("diagnostics", { mode = "workspace" })
+      end, { desc = "Toggle Trouble workspace diagnostics" })
 
-    end
-  }
+      -- Quickfix list
+      vim.keymap.set("n", "<leader>tq", function()
+        trouble.toggle("quickfix")
+      end, { desc = "Toggle Trouble quickfix" })
+
+      -- Location list
+      vim.keymap.set("n", "<leader>tl", function()
+        trouble.toggle("loclist")
+      end, { desc = "Toggle Trouble loclist" })
+
+      vim.keymap.set("n", "]t", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+      vim.keymap.set("n", "[t", vim.diagnostic.goto_prev, { desc = "Prev diagnostic" })
+
+    end,
+  },
 }
+

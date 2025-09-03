@@ -32,7 +32,11 @@ mkdir -p ~/.config
 ln -s "${DOTFILES}"/nvim ~/.config
 
 #symlink .alacritty.toml
-ln -s "${DOTFILES}"/alacritty.conf ~/.config/alacritty.toml
+mkdir -p ~/.config/alacritty/
+ln -s "${DOTFILES}"/alacritty.toml ~/.config/alacritty/alacritty.toml
+git clone https://github.com/rose-pine/alacritty.git ~/.config/alacritty_theme/
+cp ~/.config/alacritty_theme/dist/* ~/.config/alacritty
+rm -rf ~/.config/alacritty_theme/
 
 #setup neovim python3 venv
 ${BREWDIR}/bin/python3 -m venv ~/.config/nvim/.venv/

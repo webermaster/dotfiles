@@ -1,0 +1,12 @@
+[general]
+import = [
+    "~/.config/alacritty/rose-pine.toml"
+]
+
+[window]
+blur = true
+title = "Terminal"
+
+[font]
+normal = { family = "FiraCode Nerd Font", style = "Regular" }
+size = 16

@@ -1,9 +1,6 @@
 return {
   {
     "folke/trouble.nvim",
-    opts = {
-      icons = false,
-    },
     config = function(_, opts)
       local trouble = require("trouble")
 

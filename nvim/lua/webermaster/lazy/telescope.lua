@@ -11,7 +11,7 @@ return {
         })
 
         local builtin = require('telescope.builtin')
-        vim.keymap.set('n', '<C-->', builtin.find_files, {})
+        vim.keymap.set('n', '<C-_>', builtin.find_files, {})
         vim.keymap.set('n', '<leader>pf', builtin.git_files, {})
         vim.keymap.set('n', '<leader>pws', function()
           local word = vim.fn.expand('<cword>')

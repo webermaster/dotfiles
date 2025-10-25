@@ -42,7 +42,6 @@ return {
         -- A list of servers to automatically install if they're not already installed
         ensure_installed = {
           'gopls',
-          'jdtls',
           'lua_ls',
           'pylsp',
           'terraformls',
@@ -117,6 +116,12 @@ return {
                     pycodestyle = {
                       enabled = false,
                     },
+                    flake8 = {
+                      enabled = false,
+                    },
+                    pyflakes = {
+                      enabled = false,
+                    }
                   },
                 }
               }

@@ -38,99 +38,84 @@ return {
         }
       }
 
-      require('mason-lspconfig').setup({
-        -- A list of servers to automatically install if they're not already installed
-        ensure_installed = {
-          'gopls',
-          'lua_ls',
-          'pylsp',
-          'terraformls',
-          'ts_ls',
-          'rust_analyzer'
-        },
-        handlers = {
-          function(server_name) -- default handler (optional)
-            require('lspconfig')[server_name].setup {
-              capabilities = capabilities
-            }
-          end,
-          ['gopls'] = function()
-            local lspconfig = require('lspconfig')
-            lspconfig.gopls.setup {
-              capabilities = capabilities,
-              on_attach = function()
-                autocmd("BufWritePre", {
-                pattern = "*.go",
-                callback = function()
-                  local params = vim.lsp.util.make_range_params()
-                  params.context = {only = {"source.organizeImports"}}
-                  -- buf_request_sync defaults to a 1000ms timeout. Depending on your
-                  -- machine and codebase, you may want longer. Add an additional
-                  -- argument after params if you find that you have to write the file
-                  -- twice for changes to be saved.
-                  -- E.g., vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 3000)
-                  local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
-                  for cid, res in pairs(result or {}) do
-                    for _, r in pairs(res.result or {}) do
-                      if r.edit then
-                        local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
-                        vim.lsp.util.apply_workspace_edit(r.edit, enc)
-                      end
-                    end
-                  end
-                  vim.lsp.buf.format({async = false})
-                end
-              })
-              end,
-              settings = {
-                gopls = {
-                  completeUnimported = true,
-                  usePlaceholders = true,
-                  analyses = {
-                    unusedparams = true,
-                  },
-                },
-              },
-            }
-          end,
-          ['lua_ls'] = function()
-            local lspconfig = require('lspconfig')
-            lspconfig.lua_ls.setup {
-              capabilities = capabilities,
-              settings = {
-                Lua = {
-                  diagnostics = {
-                    globals = { 'vim' }
-                  }
-                }
-              }
-            }
-          end,
-          ['pylsp'] = function()
-            local lspconfig = require('lspconfig')
-            lspconfig.pylsp.setup {
-              capabilities = capabilities,
-              settings = {
-                pylsp = {
-                  plugins = {
-                    pycodestyle = {
-                      enabled = false,
-                    },
-                    flake8 = {
-                      enabled = false,
-                    },
-                    pyflakes = {
-                      enabled = false,
-                    }
-                  },
-                }
-              }
-            }
-          end
-        }
+      local servers = {
+        'gopls',
+        'lua_ls',
+        'pylsp',
+        'terraformls',
+        'ts_ls',
+        'rust_analyzer'
+      }
 
+      require('mason-lspconfig').setup({
+        ensure_installed = servers,
       })
 
+      local default_opts = {
+        capabilities = capabilities,
+      }
+
+      local custom_opts = {
+        ['gopls'] = {
+          on_attach = function(client, bufnr)
+            autocmd("BufWritePre", {
+              buffer = bufnr, -- Make it buffer-local
+              pattern = "*.go",
+              callback = function()
+                local params = vim.lsp.util.make_range_params()
+                params.context = {only = {"source.organizeImports"}}
+                local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
+                for cid, res in pairs(result or {}) do
+                  for _, r in pairs(res.result or {}) do
+                    if r.edit then
+                      local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-16"
+                      vim.lsp.util.apply_workspace_edit(r.edit, enc)
+                    end
+                  end
+                end
+                vim.lsp.buf.format({async = false})
+              end
+            })
+          end,
+          settings = {
+            gopls = {
+              completeUnimported = true,
+              usePlaceholders = true,
+              analyses = {
+                unusedparams = true,
+              },
+            },
+          },
+        },
+        ['lua_ls'] = {
+          settings = {
+            Lua = {
+              diagnostics = {
+                globals = { 'vim' }
+              }
+            }
+          }
+        },
+        ['pylsp'] = {
+          settings = {
+            pylsp = {
+              plugins = {
+                pycodestyle = {
+                  maxLineLength = 120
+                }
+              }
+            }
+          }
+        }
+      }
+
+      for _, server_name in ipairs(servers) do
+        local server_custom_opts = custom_opts[server_name] or {}
+        local final_opts = vim.tbl_deep_extend('force', {}, default_opts, server_custom_opts)
+        vim.lsp.config(server_name, final_opts)
+      end
+
+      vim.lsp.enable(servers)
       local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
       cmp.setup({
@@ -158,7 +143,6 @@ return {
         })
       })
 
-      -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
       cmp.setup.cmdline({ '/', '?' }, {
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
@@ -166,7 +150,6 @@ return {
         }
       })
 
-      -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
       cmp.setup.cmdline(':', {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({
@@ -176,24 +159,16 @@ return {
         })
       })
 
-
-      -- Global mappings.
-      -- See `:help vim.diagnostic.*` for documentation on any of the below functions
       keymap('n', '<leader>vd', d.open_float)
       keymap('n', '[d', d.goto_prev)
       keymap('n', ']d', d.goto_next)
       keymap('n', '<leader>vq', d.setloclist)
 
-      -- Use LspAttach autocommand to only map the following keys
-      -- after the language server attaches to the current buffer
       autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('UserLspConfig', {}),
         callback = function(ev)
-          -- Enable completion triggered by <c-x><c-o>
           vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-          -- Buffer local mappings.
-          -- See `:help vim.lsp.*` for documentation on any of the below functions
           local opts = { buffer = ev.buf }
           keymap('n', 'gd', buf.definition, opts)
           keymap('n', 'gD', buf.declaration, opts)
@@ -216,7 +191,5 @@ return {
         end,
       })
     end
-
-
   }
 }

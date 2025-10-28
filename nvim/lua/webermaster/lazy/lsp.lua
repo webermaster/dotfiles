@@ -50,6 +50,32 @@ return {
 
       local default_opts = {
         capabilities = capabilities,
+        on_attach = function(_, bufnr)
+          -- Enable completion triggered by <c-x><c-o>
+          vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+          -- Buffer local mappings.
+          -- See `:help vim.lsp.*` for documentation on any of the below functions
+          local opts = { buffer = bufnr }
+          keymap('n', 'gd', buf.definition, opts)
+          keymap('n', 'gD', buf.declaration, opts)
+          keymap('n', 'gi', buf.implementation, opts)
+          keymap('n', 'gr', buf.references, opts)
+          keymap('n', 'gtd', buf.type_definition, opts)
+          keymap('n', 'K', buf.hover, opts)
+          keymap('i', '<C-h>', buf.signature_help, opts)
+          keymap({ 'n', 'v' }, '<leader>vca', buf.code_action, opts)
+          keymap('n', '<leader>vf', function()
+            buf.format { async = true }
+          end, opts)
+          keymap('n', '<leader>vrn', buf.rename, opts)
+          keymap('n', '<leader>vwa', buf.add_workspace_folder, opts)
+          keymap('n', '<leader>vwl', function()
+            print(vim.inspect(buf.list_workspace_folders()))
+          end, opts)
+          keymap('n', '<leader>vwr', buf.remove_workspace_folder, opts)
+          keymap('n', '<leader>vws', buf.workspace_symbol, opts)
+        end
       }
 
       local custom_opts = {
@@ -170,7 +196,6 @@ return {
         })
       })
 
-
       -- Global mappings.
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
       keymap('n', '<leader>vd', d.open_float)
@@ -178,37 +203,6 @@ return {
       keymap('n', ']d', d.goto_next)
       keymap('n', '<leader>vq', d.setloclist)
 
-      -- Use LspAttach autocommand to only map the following keys
-      -- after the language server attaches to the current buffer
-      autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-        callback = function(ev)
-          -- Enable completion triggered by <c-x><c-o>
-          vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
-
-          -- Buffer local mappings.
-          -- See `:help vim.lsp.*` for documentation on any of the below functions
-          local opts = { buffer = ev.buf }
-          keymap('n', 'gd', buf.definition, opts)
-          keymap('n', 'gD', buf.declaration, opts)
-          keymap('n', 'gi', buf.implementation, opts)
-          keymap('n', 'gr', buf.references, opts)
-          keymap('n', 'gtd', buf.type_definition, opts)
-          keymap('n', 'K', buf.hover, opts)
-          keymap('i', '<C-h>', buf.signature_help, opts)
-          keymap({ 'n', 'v' }, '<leader>vca', buf.code_action, opts)
-          keymap('n', '<leader>vf', function()
-            buf.format { async = true }
-          end, opts)
-          keymap('n', '<leader>vrn', buf.rename, opts)
-          keymap('n', '<leader>vwa', buf.add_workspace_folder, opts)
-          keymap('n', '<leader>vwl', function()
-            print(vim.inspect(buf.list_workspace_folders()))
-          end, opts)
-          keymap('n', '<leader>vwr', buf.remove_workspace_folder, opts)
-          keymap('n', '<leader>vws', buf.workspace_symbol, opts)
-        end,
-      })
     end
   }
 }

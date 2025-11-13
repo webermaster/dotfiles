@@ -4,6 +4,7 @@ alias vim='nvim'
 alias vimdiff='nvim -d'
 alias mup='test `which minikube` && (minikube status || minikube start) && eval $(minikube docker-env)'
 alias todos='grep -r --exclude-dir=.git/ --exclude=*.swp TODO .'
+alias tython='python -m pytest --tb=auto tests/'
 
 #CREATE ENVIRONMENT VARIABLES
 export JAVA_HOME=`/usr/libexec/java_home`

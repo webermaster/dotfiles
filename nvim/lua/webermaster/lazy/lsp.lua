@@ -40,6 +40,7 @@ return {
 
       local servers = {
           'gopls',
+          'hls',
           'jdtls',
           'lua_ls',
           'pylsp',

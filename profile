@@ -19,4 +19,4 @@ export BREW_HOME=~/Developer/homebrew
 export GOROOT=`${BREW_HOME}/bin/go env GOROOT`
 
 #ADD ENVIRONMENT VARIABLES TO THE PATH
-export PATH=${BREW_HOME}/bin:${GOPATH}/bin:$(${BREW_HOME}/bin/brew --prefix rustup)/bin:${PATH}
+export PATH=${BREW_HOME}/bin:${GOPATH}/bin:$(${BREW_HOME}/bin/brew --prefix rustup)/bin:$(${BREW_HOME}/bin/ghcup whereis bindir):${PATH}

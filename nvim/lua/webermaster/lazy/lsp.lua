@@ -46,7 +46,8 @@ return {
           'pylsp',
           'terraformls',
           'ts_ls',
-          'rust_analyzer'
+          'rust_analyzer',
+          'sourcekit' -- swift
         }
 
       local default_opts = {

@@ -1,14 +1,26 @@
 return {
-  -- {
-  --   "olexsmir/gopher.nvim",
-  --   ft = "go",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --     "nvim-treesitter/nvim-treesitter",
-  --     "mfussenegger/nvim-dap", -- (optional) only if you use `gopher.dap`
-  --   },
-  --   build = function()
-  --     vim.cmd.GoInstallDeps()
-  --   end
-  -- }
+  {
+    "ray-x/go.nvim",
+    dependencies = {
+      "ray-x/guihua.lua",
+      "neovim/nvim-lspconfig",
+      "nvim-treesitter/nvim-treesitter"
+    },
+    opts = function()
+      require("go").setup(opts)
+      local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        pattern = "*.go",
+        callback = function()
+        require('go.format').goimports()
+        end,
+        group = format_sync_grp
+      })
+      return {
+      }
+    end,
+    event = {"CmdlineEnter"},
+    ft = {"go", 'gomod'},
+    build = ':lua require("go.install").update_all_sync()'
+  }
 }

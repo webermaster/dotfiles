@@ -11,6 +11,7 @@ export JAVA_HOME=`/usr/libexec/java_home`
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export EDITOR=nvim
 export GOPATH=~/go
+export JSII_SILENCE_WARNING_UNTESTED_NODE_VERSION=1
 
 source $(find /Library/Developer/CommandLineTools -name 'git-prompt.sh' -type f -print -quit 2>/dev/null | perl -pe 'chomp')
 export PS1='\h:\W \u$(__git_ps1)$ '

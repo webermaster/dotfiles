@@ -1,36 +1,45 @@
-
 return {
-  -- {
-  --   'nvim-treesitter/nvim-treesitter',
-  --   build = ':TSUpdate',
-  --   config = function()
-  --     require'nvim-treesitter.configs'.setup {
-  --       ensure_installed = {
-  --         'c',
-  --         'bash',
-  --         'haskell',
-  --         'go',
-  --         'lua',
-  --         'java',
-  --         'python',
-  --         'terraform',
-  --         'query',
-  --         'rust',
-  --         'vim',
-  --         'vimdoc'
-  --       },
-  --       auto_install = true,
-  --       ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
-  --       -- parser_install_dir = '/some/path/to/store/parsers', -- Remember to run vim.opt.runtimepath:append('/some/path/to/store/parsers')!
-  --       indent = {
-  --         enable = true
-  --       },
-  --       highlight = {
-  --         enable = true,
-  --         additional_vim_regex_highlighting = { 'markdown' },
-  --       },
-  --     }
-  --   end
-  -- }
-}
+	{
+		'nvim-treesitter/nvim-treesitter',
+		build = ':TSUpdate',
+		lazy = false,
+		init = function()
+			local parsers = {
+        'c',
+        'bash',
+        'haskell',
+        'go',
+        'lua',
+        'java',
+        'python',
+        'terraform',
+        'query',
+        'rust',
+        'vim',
+        'vimdoc',
+        'yaml'
+      }
 
+			local group = vim.api.nvim_create_augroup('WebermasterTreesitter', { clear = true })
+			vim.api.nvim_create_autocmd({ 'BufEnter', 'FileType' }, {
+				group = group,
+				callback = function()
+					if vim.bo.buftype ~= '' then
+						return
+					end
+
+					pcall(vim.treesitter.start, 0)
+				end,
+			})
+
+			vim.api.nvim_create_autocmd('User', {
+				group = group,
+				pattern = 'VeryLazy',
+				once = true,
+				callback = function()
+					require('nvim-treesitter').install(parsers)
+				end,
+			})
+		end,
+	}
+}

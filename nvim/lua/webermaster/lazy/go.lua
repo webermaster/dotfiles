@@ -1,27 +1,20 @@
 return {
   {
     "ray-x/go.nvim",
-    dependencies = {  -- optional packages
+    dependencies = {
       "ray-x/guihua.lua",
       "neovim/nvim-lspconfig",
     },
-    opts = function()
-      require("go").setup(opts)
-      local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        pattern = "*.go",
-        callback = function()
-        require('go.format').goimports()
-        end,
-        group = format_sync_grp,
+    config = function()
+      require("go").setup({
+        -- This replaces the need for a manual autocmd
+        lsp_cfg = true,
+        lsp_gofmt = true, -- runs gofmt on save
+        goimport = "goimports", -- runs goimports on save
       })
-      return {
-        -- lsp_keymaps = false,
-        -- other options
-      }
     end,
     event = {"CmdlineEnter"},
-    ft = {"go", 'gomod'},
-    build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+    ft = {"go", "gomod"},
+    build = ':lua require("go.install").update_all_sync()'
   }
 }
